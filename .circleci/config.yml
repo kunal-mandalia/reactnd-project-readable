@@ -8,10 +8,6 @@ jobs:
       npm:
         version: 4.2.0
     steps:
-      - checkout
-      - run:
-          name: update-npm
-          command: 'sudo npm install -g npm@latest'
       - restore_cache:
           key: dependency-cache-{{ checksum "package.json" }}
       - run:
