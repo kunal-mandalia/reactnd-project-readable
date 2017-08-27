@@ -1,0 +1,40 @@
+.inline-edit {
+  max-width: 600px;
+  padding: 40px;
+}
+
+#edit-input {
+  box-sizing: border-box;
+  width: 100%;
+  font-size: 1em;
+}
+
+.inline-edit-editable {
+  text-align: left;
+}
+
+.inline-edit-read-only-wrapper {
+  display: flex;
+}
+
+.inline-edit-read-only {
+  text-align: left;
+}
+
+.actions {
+  text-align: left;
+}
+
+.link-button {
+  margin: 2px 4px;
+  font-size: small;
+  color: grey;
+  cursor: pointer;
+}
+.link-button:hover {
+  color: black;
+}
+
+.pull-right {
+  float: right;
+}
