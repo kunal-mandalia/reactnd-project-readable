@@ -51,6 +51,7 @@ class InlineEdit extends Component {
           cols='50'
           value={this.state.editValue}
           onChange={this.handleEdit}
+          autoFocus
         />
         <div className='actions'>
           <a

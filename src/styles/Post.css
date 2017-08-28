@@ -1,0 +1,11 @@
+.post {
+
+}
+
+.row {
+  display: flex;
+}
+
+.content {
+  margin-left: 25px;
+}

@@ -1,0 +1,13 @@
+.rating {
+  text-align: center;
+  align-self: center;
+}
+
+.rating-value {
+  font-size: larger;
+}
+
+.vote:hover {
+  color: black !important;
+  cursor: pointer;
+}
