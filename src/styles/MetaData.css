@@ -1,0 +1,10 @@
+.meta-data {
+  display: inline-flex;
+  font-size: small;
+  color: lightgrey;
+  margin-top: 4px;
+}
+
+.date {
+  margin-right: 4px;
+}
