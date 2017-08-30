@@ -3,33 +3,33 @@ import InlineEdit from './InlineEdit'
 import Rating from './Rating'
 import MetaData from './MetaData'
 import PropTypes from 'prop-types'
-import '../styles/Post.css'
+import '../styles/Comment.css'
 
-const Post = ({
+const Comment = ({
   id,
+  parentId,
   timestamp,
-  title,
   body,
   author,
-  category,
   voteScore,
   deleted,
+  parentDeleted,
 
   onUpvote,
   onDownvote,
   onSave,
   onDelete
 }) => (
-  <div className='post'>
-    <div className='post-row'>
+  <div className='comment'>
+    <div className='comment-row'>
       <Rating
         rating={voteScore}
         onUpvote={() => {}}
         onDownvote={() => {}}
       />
-      <div className='post-content'>
+      <div className='comment-content'>
         <InlineEdit
-          initialValue={`${title} - ${body}`}
+          initialValue={`${body}`}
           onSave={() => {}}
           onDelete={() => {}}
         />
@@ -42,19 +42,20 @@ const Post = ({
   </div>
 )
 
-Post.propTypes = {
+Comment.propTypes = {
   id: PropTypes.string.isRequired,
+  parentId: PropTypes.string.isRequired,
   timestamp: PropTypes.number.isRequired,
-  title: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
-  category: PropTypes.string.isRequired,
   voteScore: PropTypes.number.isRequired,
   deleted: PropTypes.bool.isRequired,
+  parentDeleted: PropTypes.bool.isRequired,
+  
   onUpvote: PropTypes.func,
   onDownvote: PropTypes.func,
   onSave: PropTypes.func,
   onDelete: PropTypes.func,
 }
 
-export default Post
+export default Comment

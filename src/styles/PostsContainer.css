@@ -1,0 +1,9 @@
+.posts-container {
+  margin-top: 14px;
+  margin-left: 10vw;
+  background-color: grey;
+}
+
+.posts-comments {
+  padding-bottom: 10px;
+}

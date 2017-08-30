@@ -1,0 +1,23 @@
+.comment {
+  padding: 10px;
+  margin: 1.75px;  
+  margin-left: 20px;
+  max-width: 780px;
+
+  background-color: #676767;
+  color: rgba(255,255,255, 0.75);
+}
+
+.comment:hover {
+  background-color: #414141;
+}
+
+.comment-row {
+  display: flex;
+}
+  
+.comment-content {
+  margin: 0 25px;
+  width: 100%;
+}
+  

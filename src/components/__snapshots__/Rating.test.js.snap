@@ -11,7 +11,7 @@ exports[`<Rating .../> should match snapshot 1`] = `
     <svg
       className="vote"
       fill="currentColor"
-      height={20}
+      height={15}
       preserveAspectRatio="xMidYMid meet"
       style={
         Object {
@@ -20,7 +20,7 @@ exports[`<Rating .../> should match snapshot 1`] = `
         }
       }
       viewBox="0 0 40 40"
-      width={20}
+      width={15}
     >
       <g>
         <path
@@ -42,7 +42,7 @@ exports[`<Rating .../> should match snapshot 1`] = `
     <svg
       className="vote"
       fill="currentColor"
-      height={20}
+      height={15}
       preserveAspectRatio="xMidYMid meet"
       style={
         Object {
@@ -51,7 +51,7 @@ exports[`<Rating .../> should match snapshot 1`] = `
         }
       }
       viewBox="0 0 40 40"
-      width={20}
+      width={15}
     >
       <g>
         <path

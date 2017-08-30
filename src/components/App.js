@@ -1,23 +1,27 @@
 import React, { Component } from 'react';
 import '../styles/App.css';
-import Post from './Post'
+import PostsContainer from './PostsContainer'
+import { fetchInitialData } from '../actions/index'
+import { connect } from 'react-redux'
+import NavbarContainer from './NavbarContainer'
 
-class App extends Component {
+export class App extends Component {
+  componentDidMount () {
+    this.props.dispatch(fetchInitialData())
+  }
+
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-        <Post
-
-        />
+        <NavbarContainer />
+        <PostsContainer />
       </div>
     );
   }
 }
 
-export default App;
+const mapDispatchToProps = (dispatch) => ({
+  dispatch
+})
+
+export default connect(null, mapDispatchToProps)(App)

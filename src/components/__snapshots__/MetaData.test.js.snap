@@ -4,6 +4,7 @@ exports[`<MetaData .../> should match snapshot 1`] = `
 <div
   className="meta-data"
 >
+  <hr />
   <div
     className="date"
   >

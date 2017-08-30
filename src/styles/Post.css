@@ -1,11 +1,19 @@
 .post {
-
+  padding: 10px;
+  max-width: 800px;  
+  background-color: #5b5b5b;
+  color: rgba(255,255,255, 0.75);
 }
 
-.row {
+.post:hover {
+  background-color: #303030;  
+}
+
+.post-row {
   display: flex;
 }
 
-.content {
-  margin-left: 25px;
+.post-content {
+  margin: 0 25px;
+  width: 100%;
 }

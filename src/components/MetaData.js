@@ -8,6 +8,7 @@ const MetaData = ({ date, author }) => {
   const minutesSince = moment().diff(date, 'days')
   return (
     <div className='meta-data'>
+      <hr />
       <div className='date'>
         {daysSince > 0 ? `${daysSince}d` : `${minutesSince}m`}
       </div>

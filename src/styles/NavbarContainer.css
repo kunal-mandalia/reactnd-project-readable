@@ -1,0 +1,29 @@
+.navbar {
+  color: rgba(255,255,255,0.8);
+  background-color: #343434;
+  padding: 5px;
+}
+
+.navbar-logo {
+  background-color: green;
+  padding: 5px;
+  margin: -5px;
+}
+
+.navbar-categories {
+  margin-left: 20px;
+}
+
+.navbar-category {
+  margin: 0 4px;
+}
+.navbar-category:hover {
+  margin: 0 4px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.navbar-category-separator {
+  color: darkgrey;
+  margin: 0 4px;
+}

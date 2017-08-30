@@ -1,7 +1,9 @@
 .inline-edit {
-  max-width: 600px;
+  /* max-width: 600px; */
   margin-top: 4px;
   min-height: 20px;
+  box-sizing: border-box;
+  width: 100%;
 }
 
 #edit-input {
