@@ -7,13 +7,13 @@ import '../styles/Rating.css'
 const Rating = ({ rating, onVoteUp, onVoteDown }) => (
   <div className='rating'>
     <div id='upvote-button' onClick={onVoteUp}>
-      <ChevronUp size={15} color='grey' className='vote' />
+      <ChevronUp size={14} color='grey' className='vote' />
     </div>
     <div id='rating-value' className='rating-value'>
       {rating}
     </div>
     <div id='downvote-button' onClick={onVoteDown}>
-      <ChevronDown size={15} color='grey' className='vote' />
+      <ChevronDown size={14} color='grey' className='vote' />
     </div>
   </div>
 )
