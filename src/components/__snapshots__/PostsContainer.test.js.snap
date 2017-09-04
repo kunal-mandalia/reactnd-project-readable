@@ -124,6 +124,13 @@ exports[`PostsContainer should match snapshot 1`] = `
                 >
                    edit 
                 </a>
+                 |
+                <a
+                  className="action-bar-action"
+                  onClick={[Function]}
+                >
+                   reply 
+                </a>
                 ]
               </span>
             </div>
@@ -247,6 +254,13 @@ exports[`PostsContainer should match snapshot 1`] = `
                   >
                      edit 
                   </a>
+                   |
+                  <a
+                    className="action-bar-action"
+                    onClick={[Function]}
+                  >
+                     reply 
+                  </a>
                   ]
                 </span>
               </div>
@@ -366,6 +380,13 @@ exports[`PostsContainer should match snapshot 1`] = `
                     onClick={[Function]}
                   >
                      edit 
+                  </a>
+                   |
+                  <a
+                    className="action-bar-action"
+                    onClick={[Function]}
+                  >
+                     reply 
                   </a>
                   ]
                 </span>
@@ -495,6 +516,13 @@ exports[`PostsContainer should match snapshot 1`] = `
                   onClick={[Function]}
                 >
                    edit 
+                </a>
+                 |
+                <a
+                  className="action-bar-action"
+                  onClick={[Function]}
+                >
+                   reply 
                 </a>
                 ]
               </span>
