@@ -16,8 +16,8 @@ const props = {
   category: 'redux',
   voteScore: -5,
   deleted: false,
-  onUpvote: mockFnOnUpvote,
-  onDownvote: mockFnOnDownvote,
+  onVoteUp: mockFnOnUpvote,
+  onVoteDown: mockFnOnDownvote,
   onSave: mockFnOnSave,
   onDelete: mockFnOnDelete
 }

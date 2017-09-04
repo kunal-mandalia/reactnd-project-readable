@@ -28,7 +28,6 @@ class Post extends Component {
 
   onCancel () {
     const { title, body } = this.props
-    console.log('onCancel POST.js', title, body, this.state)
     this.setState(state => ({
       editTitle: title,
       editBody: body,
@@ -38,13 +37,17 @@ class Post extends Component {
 
   render () {
     const editMode = this.props.update && (this.props.update.type === EDIT) && (this.props.update.status === EDIT_MODE)
-    return (
+    const node = this.props.deleted ? (
+      <div className='post post-deleted'>
+        <i>post deleted</i>
+      </div>
+    ) : (
       <div className='post'>
         <div className='post-row'>
           <Rating
             rating={this.props.voteScore}
-            onUpvote={() => {}}
-            onDownvote={() => {}}
+            onVoteUp={this.props.onVoteUp}
+            onVoteDown={this.props.onVoteDown}
           />
           <div className='post-content'>
             <InlineEdit
@@ -77,6 +80,11 @@ class Post extends Component {
         </div>
       </div>
     )
+    return (
+      <div className='post-wrapper'>
+        {node}
+      </div>
+    )
   }
 }
 
@@ -93,6 +101,8 @@ Post.propTypes = {
   onDownvote: PropTypes.func,
   onSave: PropTypes.func,
   onDelete: PropTypes.func,
+  onVoteUp: PropTypes.func,
+  onVoteDown: PropTypes.func,
   update: PropTypes.object
 }
 

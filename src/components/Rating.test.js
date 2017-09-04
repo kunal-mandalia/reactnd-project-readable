@@ -8,8 +8,8 @@ const mockFnDownvote = jest.fn()
 
 const props = {
   rating: 4,
-  onUpvote: mockFnUpvote,
-  onDownvote: mockFnDownvote,
+  onVoteUp: mockFnUpvote,
+  onVoteDown: mockFnDownvote,
 }
 
 describe(`<Rating .../>`, () => {

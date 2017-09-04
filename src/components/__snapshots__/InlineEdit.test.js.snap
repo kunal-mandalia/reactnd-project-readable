@@ -3,5 +3,7 @@
 exports[`<InlineEdit .../> should match snapshot 1`] = `
 <div
   className="inline-edit-read-only undefined"
-/>
+>
+  I'm a post
+</div>
 `;

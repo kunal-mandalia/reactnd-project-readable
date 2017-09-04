@@ -3,8 +3,10 @@ import ActionBar from './ActionBar'
 import renderer from 'react-test-renderer'
 
 const props = {
+  author: `Kunal Mandalia`,
+  editBody: `editBody`,
   date: Date.now(),
-  author: `Kunal Mandalia`
+  editMode: false,
 }
 
 describe(`<ActionBar .../>`, () => {

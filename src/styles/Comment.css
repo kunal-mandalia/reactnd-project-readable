@@ -20,4 +20,8 @@
   margin: 0 8px;
   width: 100%;
 }
-  
+
+.comment-deleted {
+  border-left: solid 2px grey;
+  margin-left: -2px;
+}

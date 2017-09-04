@@ -7,10 +7,9 @@
 .navbar-logo {
   color: #222222;
   background-color: white;
-  padding: 5px;
-  padding-left: 8px;
+  padding: 5px 5px 6px 8px;
   margin: -5px;
-  border-left: solid 6px #0cb6a6;
+  border-left: solid 6px paleturquoise;
 }
 
 .navbar-categories {

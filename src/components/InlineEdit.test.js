@@ -5,9 +5,12 @@ import InlineEdit from './InlineEdit'
 
 const mockOnSave = jest.fn()
 const mockOnDelete = jest.fn()
+const mockOnChange = jest.fn()
 
 const props = {
-  initialValue: `I'm a post`,
+  value: `I'm a post`,
+  editMode: false,
+  onChange: mockOnChange,
   onSave: mockOnSave,
   onDelete: mockOnDelete
 }

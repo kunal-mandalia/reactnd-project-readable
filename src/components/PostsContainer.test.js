@@ -49,18 +49,20 @@ const comments = {
   }
 }
 
+const updates = {}
+
 describe(`PostsContainer`, () => {
-  const wrapper = mount(<PostsContainer posts={posts} comments={comments} />)
+  const wrapper = mount(<PostsContainer posts={posts} comments={comments} updates={updates} />)
   it(`should render ${Object.keys(posts).length} post(s)`, () => {
-    expect(wrapper.find('Post')).toHaveLength(bject.keys(posts).length)
+    expect(wrapper.find('Post')).toHaveLength(Object.keys(posts).length)
   })
 
-  it(`should render ${comments.length} comment(s)`, () => {
-    expect(wrapper.find('Comment')).toHaveLength(comments.length)
+  it(`should render ${Object.keys(comments).length} comment(s)`, () => {
+    expect(wrapper.find('Comment')).toHaveLength(Object.keys(comments).length)
   })
 
   it(`should match snapshot`, () => {
-    const tree = renderer.create(<PostsContainer posts={posts} comments={comments} />).toJSON()
+    const tree = renderer.create(<PostsContainer posts={posts} comments={comments} updates={updates} />).toJSON()
     expect(tree).toMatchSnapshot()
   })
 })

@@ -4,15 +4,15 @@ import ChevronUp from 'react-icons/lib/fa/chevron-up'
 import ChevronDown from 'react-icons/lib/fa/chevron-down'
 import '../styles/Rating.css'
 
-const Rating = ({ rating, onUpvote, onDownvote }) => (
+const Rating = ({ rating, onVoteUp, onVoteDown }) => (
   <div className='rating'>
-    <div id='upvote-button' onClick={onUpvote}>
+    <div id='upvote-button' onClick={onVoteUp}>
       <ChevronUp size={15} color='grey' className='vote' />
     </div>
     <div id='rating-value' className='rating-value'>
       {rating}
     </div>
-    <div id='downvote-button' onClick={onDownvote}>
+    <div id='downvote-button' onClick={onVoteDown}>
       <ChevronDown size={15} color='grey' className='vote' />
     </div>
   </div>
@@ -20,8 +20,8 @@ const Rating = ({ rating, onUpvote, onDownvote }) => (
 
 Rating.propTypes = {
   rating: PropTypes.number.isRequired,
-  onUpvote: PropTypes.func.isRequired,
-  onDownvote: PropTypes.func.isRequired
+  onVoteUp: PropTypes.func.isRequired,
+  onVoteDown: PropTypes.func.isRequired
 }
 
 export default Rating

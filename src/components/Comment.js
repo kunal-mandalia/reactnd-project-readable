@@ -4,18 +4,15 @@ import Rating from './Rating'
 import ActionBar from './ActionBar'
 import PropTypes from 'prop-types'
 import '../styles/Comment.css'
+import { EDIT_MODE, REQUEST, EDIT, SUCCESS, ERROR } from '../constants/index'
 
 class Comment extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      body: props.body,
       editBody: props.body,
     }
     this.handleChangeBody = this.handleChangeBody.bind(this)
-    this.onSave = this.onSave.bind(this)
-    this.onEdit = this.onEdit.bind(this)
-    this.onDelete = this.onDelete.bind(this)
     this.onCancel = this.onCancel.bind(this)
   }
 
@@ -23,61 +20,54 @@ class Comment extends Component {
     this.setState({ editBody: e.target.value })
   }
 
-  onSave () {
-    this.setState(state => ({
-      title: state.editTitle,
-      body: state.editBody,
-      editMode: false
-    }))
-  }
-
   onCancel () {
     this.setState(state => ({
-      editTitle: state.title,
-      editBody: state.body,
-      editMode: false
+      editBody: this.props.body,
     }))
-  }
-
-  onDelete () {
-    this.setState({
-      editMode: false      
-    })
-  }
-
-  onEdit () {
-    this.setState({ editMode: true })
+    this.props.onCancel(this.props.id)
   }
 
   render () {
-    return (
+    const editMode = this.props.update && (this.props.update.type === EDIT) && (this.props.update.status === EDIT_MODE)
+    const node = this.props.deleted ? (
+      <div className='comment comment-deleted'>
+        <i>comment deleted</i>
+      </div>
+    ) : (
       <div className='comment'>
         <div className='comment-row'>
           <Rating
             rating={this.props.voteScore}
-            onUpvote={() => {}}
-            onDownvote={() => {}}
+            onVoteUp={this.props.onVoteUp}
+            onVoteDown={this.props.onVoteDown}
           />
           <div className='comment-content'>
             <InlineEdit
-              className={`inline-edit comment-body ${this.state.body === this.state.editBody ? 'edit-input-unchanged' : 'edit-input-changed'}`}
+              className={`inline-edit comment-body ${this.props.body === this.state.editBody ? 'edit-input-unchanged' : 'edit-input-changed'}`}
               value={this.state.editBody}
               onChange={this.handleChangeBody}
-              editMode={this.state.editMode}
+              editMode={editMode}
               multiline
             />
             <ActionBar
               date={this.props.timestamp}
               author={this.props.author}
-              category={this.props.category}
-              editMode={this.state.editMode}
-              onEdit={this.onEdit}
-              onSave={this.onSave}
-              onDelete={this.onDelete}
+              editBody={this.state.editBody}
+              editMode={editMode}
+              onEdit={() => { this.props.onEdit(this.props.id) }}
               onCancel={this.onCancel}
+              onSave={ () => { this.props.onSave(this.props.id, this.state.editBody) }}
+              onDelete={() => { this.props.onDelete(this.props.id) }}
+              hideCategory
             />
           </div>
         </div>
+      </div>
+    )
+
+    return (
+      <div className='comment-wrapper'>
+        {node}
       </div>
     )
   }

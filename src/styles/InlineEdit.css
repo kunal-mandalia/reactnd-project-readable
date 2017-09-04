@@ -1,5 +1,4 @@
 .inline-edit {
-  /* max-width: 600px; */
   margin-top: 4px;
   min-height: 20px;
   box-sizing: border-box;
@@ -10,6 +9,7 @@
   box-sizing: border-box;
   width: 100%;
   font-size: 1em;
+  font-family: inherit;
   background-color: rgba(0,0,0,0.05);
   border: none;
   border-left: solid 4px rgba(0,0,0,0);
