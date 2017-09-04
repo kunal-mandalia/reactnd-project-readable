@@ -1,9 +1,11 @@
 .posts-container {
   margin-top: 14px;
-  margin-left: 10vw;
-  background-color: grey;
+  margin: 15px auto;
+  background-color: #ececec;
+  max-width: 600px;
 }
 
 .posts-comments {
-  padding-bottom: 10px;
+  border-left: solid 2px #c2c2c2;
+  margin-left: 40px;
 }

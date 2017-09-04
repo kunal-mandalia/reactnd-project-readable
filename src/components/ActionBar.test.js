@@ -1,5 +1,5 @@
 import React from 'react'
-import MetaData from './MetaData'
+import ActionBar from './ActionBar'
 import renderer from 'react-test-renderer'
 
 const props = {
@@ -7,9 +7,9 @@ const props = {
   author: `Kunal Mandalia`
 }
 
-describe(`<MetaData .../>`, () => {
+describe(`<ActionBar .../>`, () => {
   it(`should match snapshot`, () => {
-    const tree = renderer.create(<MetaData {...props} />).toJSON()
+    const tree = renderer.create(<ActionBar {...props} />).toJSON()
     expect(tree).toMatchSnapshot()
   })
 })

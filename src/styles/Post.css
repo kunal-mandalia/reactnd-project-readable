@@ -1,12 +1,13 @@
 .post {
   padding: 10px;
-  max-width: 800px;  
-  background-color: #5b5b5b;
-  color: rgba(255,255,255, 0.75);
+  background-color: #ececec;
+  color: #222222;
 }
 
 .post:hover {
-  background-color: #303030;  
+  border-left: solid 4px grey;
+  margin-left: -4px;
+  background-color: #fdfdfd;
 }
 
 .post-row {
@@ -14,6 +15,6 @@
 }
 
 .post-content {
-  margin: 0 25px;
+  margin: 0 15px;
   width: 100%;
 }

@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ActionBar .../> should match snapshot 1`] = `
+<div
+  className="action-bar"
+>
+  <hr
+    className="action-bar-separator"
+  />
+  <span
+    className="action-bar-date"
+  >
+     
+    now
+     
+  </span>
+  <span
+    className="action-bar-author"
+  >
+     by 
+    Kunal Mandalia
+     
+  </span>
+  <span
+    className="action-bar-category"
+  >
+     in 
+     
+  </span>
+  <span
+    className="action-bar-actions"
+  >
+    [
+    <a
+      className="action-bar-action"
+      onClick={[Function]}
+    >
+       edit 
+    </a>
+    ]
+  </span>
+</div>
+`;

@@ -29,11 +29,11 @@ describe(`<Post .../>`, () => {
     expect(wrapper.find('Rating')).toHaveLength(1)
   })
 
-  it(`should render <InlineEdit .../> component`, () => {
-    expect(wrapper.find('InlineEdit')).toHaveLength(1)
+  it(`should render two <InlineEdit .../> components for title, body`, () => {
+    expect(wrapper.find('InlineEdit')).toHaveLength(2)
   })
 
-  it(`should render <MetaData .../> component`, () => {
-    expect(wrapper.find('MetaData')).toHaveLength(1)
+  it(`should render <ActionBar .../> component`, () => {
+    expect(wrapper.find('ActionBar')).toHaveLength(1)
   })
 })

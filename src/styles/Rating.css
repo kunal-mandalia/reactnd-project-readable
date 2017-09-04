@@ -1,8 +1,8 @@
 .rating {
   text-align: center;
   /* align-self: center; */
-  padding: 2px 16px 2px 8px;
-  border-right: solid 1px rgba(255,255,255,0.1);
+  padding: 2px 8px 2px 8px;
+  /* border-right: solid 1px rgba(117, 117, 117, 0.1); */
 }
 
 .rating-value {

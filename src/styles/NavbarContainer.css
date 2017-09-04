@@ -1,13 +1,16 @@
 .navbar {
-  color: rgba(255,255,255,0.8);
+  color: rgba(255,255,255,0.92);
   background-color: #343434;
   padding: 5px;
 }
 
 .navbar-logo {
-  background-color: green;
+  color: #222222;
+  background-color: white;
   padding: 5px;
+  padding-left: 8px;
   margin: -5px;
+  border-left: solid 6px #0cb6a6;
 }
 
 .navbar-categories {
@@ -24,6 +27,6 @@
 }
 
 .navbar-category-separator {
-  color: darkgrey;
+  color: #5e5e5e;
   margin: 0 4px;
 }

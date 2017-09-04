@@ -1,0 +1,14 @@
+.action-bar {
+  font-size: small;
+  color: rgb(140, 140, 140);
+  margin-top: 4px;
+}
+
+.action-bar-separator {
+  border: none;
+}
+
+.action-bar-action:hover {
+  cursor: pointer;
+  color: #222222;
+}

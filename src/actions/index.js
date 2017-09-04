@@ -1,8 +1,16 @@
 import {
   API,
+
   FETCH_INITIAL_DATA_REQUEST,
   FETCH_INITIAL_DATA_ERROR,
-  FETCH_INITIAL_DATA_SUCCESS
+  FETCH_INITIAL_DATA_SUCCESS,
+
+  EDIT_POST_REQUEST,
+  EDIT_POST_ERROR,
+  EDIT_POST_SUCCESS,
+
+  EDIT_POST_BEGIN,
+  EDIT_POST_END
 } from '../constants/index'
 import axios from 'axios'
 axios.defaults.headers.common['Authorization'] = 'auth-string';
@@ -14,34 +22,41 @@ export const fetchInitialData = () => {
   return (dispatch) => {
     dispatch(fetchInitialDataRequest())
     return axios.get(`${API}/categories`)
-    .then((response) => {
+    .then((categoriesResponse) => {
       axios.get(`${API}/posts`)
       .then((postsResponse) => {
-        const posts = postsResponse.data
-        const getComments = posts.map(p => axios.get(`${API}/posts/${p.id}/comments`))
+        const getComments = postsResponse.data.map(p => axios.get(`${API}/posts/${p.id}/comments`))
         axios.all(getComments)
         .then((commentsResponse) => {
+          const categories = categoriesResponse.data.categories
+                              .reduce((categories, category) => ({ ...categories, [category.name]: category}), {})
+          const posts = postsResponse.data.reduce((posts, post) => ({ ...posts, [post.id]: post }), {})
           const comments = commentsResponse
                             .map(c => c.data)
-                            .reduce((comments, comment) => {
-                              return comments.concat(comment)
-                            }, [])
-          dispatch(fetchInitialDataSuccess({
-            'categories': response.data.categories,
-            'posts': postsResponse.data,
-            'comments': comments,
-          }))
+                            .reduce((comments, comment) => comments.concat(comment))
+                            .reduce((comments, comment) => ({ ...comments, [comment.id]: comment }), {})
+          dispatch(fetchInitialDataSuccess({ categories, posts, comments }))
         })
-        .catch((commentError) => {
-          dispatch(fetchInitialDataError(commentError))
-        })
+        .catch((commentsError) => { dispatch(fetchInitialDataError(commentsError)) })
       })
-      .catch((postsError) => {
-        dispatch(fetchInitialDataError(postsError))    
-      })
+      .catch((postsError) => { dispatch(fetchInitialDataError(postsError)) })
     })
-    .catch((error) => {
-      dispatch(fetchInitialDataError(error))
-    })
+    .catch((categoriesError) => { dispatch(fetchInitialDataError(categoriesError)) })
   }
 }
+
+
+export const editPostRequest = ({ id, title, body }) => ({ type: EDIT_POST_REQUEST, id, title, body })
+export const editPostError = (error) => ({ type: EDIT_POST_ERROR, error })
+export const editPostSuccess = (post) => ({ type: EDIT_POST_SUCCESS, post })
+export const editPost = ({ id, title, body }) => {
+  return (dispatch) => {
+    dispatch(editPostRequest({ id, title, body }))
+    axios.put(`${API}/posts/${id}`, { title, body })
+    .then((response) => { dispatch(editPostSuccess(response.data)) })
+    .catch((error) => { dispatchEvent(editPostError(error)) })
+  }
+}
+
+export const beginEditPost = id => ({ type: EDIT_POST_BEGIN, id })
+export const endEditPost = id => ({ type: EDIT_POST_END, id })

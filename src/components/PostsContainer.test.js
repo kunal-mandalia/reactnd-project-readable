@@ -1,9 +1,10 @@
 import React from 'react'
 import { PostsContainer } from './PostsContainer'
-import { shallow } from 'enzyme'
+import { mount } from 'enzyme'
+import renderer from 'react-test-renderer'
 
-const posts = [
-  {
+const posts = {
+  '8xf0y6ziyjabvozdd253nd': {
     id: '8xf0y6ziyjabvozdd253nd',
     timestamp: 1467166872634,
     title: 'Udacity is the best place to learn React',
@@ -13,7 +14,7 @@ const posts = [
     voteScore: 6,
     deleted: false 
   },
-  {
+  '6ni6ok3ym7mf1p33lnez': {
     id: '6ni6ok3ym7mf1p33lnez',
     timestamp: 1468479767190,
     title: 'Learn Redux in 10 minutes!',
@@ -23,10 +24,10 @@ const posts = [
     voteScore: -5,
     deleted: false
   }
-]
+}
 
-const comments = [
-  { 
+const comments = {
+  '894tuq4ut84ut8v4t8wun89g': { 
     id: '894tuq4ut84ut8v4t8wun89g',
     parentId: "8xf0y6ziyjabvozdd253nd",
     timestamp: 1468166872634,
@@ -36,7 +37,7 @@ const comments = [
     deleted: false,
     parentDeleted: false 
   },
-  {
+  '8tu4bsun805n8un48ve89': {
     id: '8tu4bsun805n8un48ve89',
     parentId: "8xf0y6ziyjabvozdd253nd",
     timestamp: 1469479767190,
@@ -46,15 +47,20 @@ const comments = [
     deleted: false,
     parentDeleted: false
   }
-]
+}
 
 describe(`PostsContainer`, () => {
-  const wrapper = shallow(<PostsContainer posts={posts} comments={comments} />)
-  it(`should render ${posts.length} post(s)`, () => {
-    expect(wrapper.find('Post')).toHaveLength(posts.length)
+  const wrapper = mount(<PostsContainer posts={posts} comments={comments} />)
+  it(`should render ${Object.keys(posts).length} post(s)`, () => {
+    expect(wrapper.find('Post')).toHaveLength(bject.keys(posts).length)
   })
 
   it(`should render ${comments.length} comment(s)`, () => {
     expect(wrapper.find('Comment')).toHaveLength(comments.length)
+  })
+
+  it(`should match snapshot`, () => {
+    const tree = renderer.create(<PostsContainer posts={posts} comments={comments} />).toJSON()
+    expect(tree).toMatchSnapshot()
   })
 })
