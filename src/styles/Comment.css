@@ -24,4 +24,5 @@
 .comment-deleted {
   border-left: solid 2px grey;
   margin-left: -2px;
+  padding-left: 11.75px;  
 }
