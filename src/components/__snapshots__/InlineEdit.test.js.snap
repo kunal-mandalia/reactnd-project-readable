@@ -2,25 +2,8 @@
 
 exports[`<InlineEdit .../> should match snapshot 1`] = `
 <div
-  className="inline-edit"
+  className="inline-edit-read-only undefined"
 >
-  <div
-    className="inline-edit-read-only"
-  >
-    <span
-      className="inline-edit-read-only"
-    >
-      I'm a post
-    </span>
-    <span>
-      <a
-        className="link-button pull-right"
-        id="edit-button"
-        onClick={[Function]}
-      >
-        edit
-      </a>
-    </span>
-  </div>
+  I'm a post
 </div>
 `;

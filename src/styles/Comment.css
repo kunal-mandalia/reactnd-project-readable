@@ -1,0 +1,27 @@
+.comment {
+  padding: 10px;
+  margin: 1.75px;
+  background-color: #ececec;
+  color: #222222;
+}
+
+.comment:hover {
+  border-left: solid 2px grey;
+  margin-left: -2px;
+  background-color: #fdfdfd;
+  padding-left: 12px;
+}
+
+.comment-row {
+  display: flex;
+}
+  
+.comment-content {
+  margin: 0 8px;
+  width: 100%;
+}
+
+.comment-deleted {
+  border-left: solid 2px grey;
+  margin-left: -2px;
+}

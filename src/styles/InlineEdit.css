@@ -1,13 +1,24 @@
 .inline-edit {
-  max-width: 600px;
   margin-top: 4px;
   min-height: 20px;
+  box-sizing: border-box;
+  width: 100%;
 }
 
-#edit-input {
+.edit-input {
   box-sizing: border-box;
   width: 100%;
   font-size: 1em;
+  font-family: inherit;
+  background-color: rgba(0,0,0,0.05);
+  border: none;
+  border-left: solid 4px rgba(0,0,0,0);
+  outline: none;
+  padding: 2px 2px 2px 8px;
+}
+
+.edit-input-changed {
+  border-left: solid 4px paleturquoise;
 }
 
 .inline-edit-editable {
@@ -38,4 +49,9 @@
 
 .pull-right {
   float: right;
+}
+
+.post-title {
+  font-weight: bold;
+  color: #545454;
 }

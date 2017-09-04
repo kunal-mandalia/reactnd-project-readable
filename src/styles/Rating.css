@@ -1,10 +1,12 @@
 .rating {
   text-align: center;
-  align-self: center;
+  /* align-self: center; */
+  padding: 2px 8px 2px 8px;
+  /* border-right: solid 1px rgba(117, 117, 117, 0.1); */
 }
 
 .rating-value {
-  font-size: larger;
+  font-size: large;
 }
 
 .vote:hover {

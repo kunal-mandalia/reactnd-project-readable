@@ -1,11 +1,25 @@
 .post {
-
+  padding: 10px;
+  background-color: #ececec;
+  color: #222222;
 }
 
-.row {
+.post:hover {
+  border-left: solid 4px grey;
+  margin-left: -4px;
+  background-color: #fdfdfd;
+}
+
+.post-row {
   display: flex;
 }
 
-.content {
-  margin-left: 25px;
+.post-content {
+  margin: 0 15px;
+  width: 100%;
+}
+
+.post-deleted {
+  border-left: solid 4px grey;
+  margin-left: -4px;
 }

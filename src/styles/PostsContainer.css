@@ -1,0 +1,11 @@
+.posts-container {
+  margin-top: 14px;
+  margin: 15px auto;
+  background-color: #ececec;
+  max-width: 600px;
+}
+
+.posts-comments {
+  border-left: solid 2px #c2c2c2;
+  margin-left: 40px;
+}

@@ -3,23 +3,17 @@ import InlineEdit from './InlineEdit'
 import Rating from './Rating'
 import ActionBar from './ActionBar'
 import PropTypes from 'prop-types'
-import '../styles/Post.css'
+import '../styles/Comment.css'
 import { EDIT_MODE, REQUEST, EDIT, SUCCESS, ERROR } from '../constants/index'
 
-class Post extends Component {
+class Comment extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      editTitle: props.title,
       editBody: props.body,
     }
-    this.handleChangeTitle = this.handleChangeTitle.bind(this)
     this.handleChangeBody = this.handleChangeBody.bind(this)
     this.onCancel = this.onCancel.bind(this)
-  }
-
-  handleChangeTitle (e) {
-    this.setState({ editTitle: e.target.value })
   }
 
   handleChangeBody (e) {
@@ -27,10 +21,8 @@ class Post extends Component {
   }
 
   onCancel () {
-    const { title, body } = this.props
     this.setState(state => ({
-      editTitle: title,
-      editBody: body,
+      editBody: this.props.body,
     }))
     this.props.onCancel(this.props.id)
   }
@@ -38,72 +30,60 @@ class Post extends Component {
   render () {
     const editMode = this.props.update && (this.props.update.type === EDIT) && (this.props.update.status === EDIT_MODE)
     const node = this.props.deleted ? (
-      <div className='post post-deleted'>
-        <i>post deleted</i>
+      <div className='comment comment-deleted'>
+        <i>comment deleted</i>
       </div>
     ) : (
-      <div className='post'>
-        <div className='post-row'>
+      <div className='comment'>
+        <div className='comment-row'>
           <Rating
             rating={this.props.voteScore}
             onVoteUp={this.props.onVoteUp}
             onVoteDown={this.props.onVoteDown}
           />
-          <div className='post-content'>
+          <div className='comment-content'>
             <InlineEdit
-              className={`inline-edit post-title ${this.props.title === this.state.editTitle ? 'edit-input-unchanged' : 'edit-input-changed'}`}
-              value={this.state.editTitle}
-              onChange={this.handleChangeTitle}
-              editMode={editMode}
-            />
-            <InlineEdit
-              className={`inline-edit post-body ${this.props.body === this.state.editBody ? 'edit-input-unchanged' : 'edit-input-changed'}`}
+              className={`inline-edit comment-body ${this.props.body === this.state.editBody ? 'edit-input-unchanged' : 'edit-input-changed'}`}
               value={this.state.editBody}
               onChange={this.handleChangeBody}
               editMode={editMode}
               multiline
             />
             <ActionBar
-              id={this.props.id}
-              editTitle={this.state.editTitle}
-              editBody={this.state.editBody}
               date={this.props.timestamp}
               author={this.props.author}
-              category={this.props.category}
+              editBody={this.state.editBody}
               editMode={editMode}
-              onEdit={this.props.onEdit}
-              onSave={this.props.onSave}
-              onDelete={this.props.onDelete}
+              onEdit={() => { this.props.onEdit(this.props.id) }}
               onCancel={this.onCancel}
+              onSave={ () => { this.props.onSave(this.props.id, this.state.editBody) }}
+              onDelete={() => { this.props.onDelete(this.props.id) }}
+              hideCategory
             />
           </div>
         </div>
       </div>
     )
+
     return (
-      <div className='post-wrapper'>
+      <div className='comment-wrapper'>
         {node}
       </div>
     )
   }
 }
 
-Post.propTypes = {
+Comment.propTypes = {
   id: PropTypes.string.isRequired,
   timestamp: PropTypes.number.isRequired,
-  title: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
-  category: PropTypes.string.isRequired,
   voteScore: PropTypes.number.isRequired,
   deleted: PropTypes.bool.isRequired,
   onUpvote: PropTypes.func,
   onDownvote: PropTypes.func,
   onSave: PropTypes.func,
   onDelete: PropTypes.func,
-  onVoteUp: PropTypes.func,
-  onVoteDown: PropTypes.func,
-  update: PropTypes.object
 }
 
-export default Post
+export default Comment
