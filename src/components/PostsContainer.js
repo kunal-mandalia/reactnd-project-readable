@@ -14,6 +14,8 @@ import {
   voteComment,
   deletePost,
   deleteComment,
+  newCommentShow,
+  newCommentHide,
 } from '../actions/index.js'
 
 export class PostsContainer extends Component {
@@ -35,6 +37,9 @@ export class PostsContainer extends Component {
     this.onVoteDownComment = this.onVoteDownComment.bind(this)
     this.onDeletePost = this.onDeletePost.bind(this)
     this.onDeleteComment = this.onDeleteComment.bind(this)
+
+    this.onReply = this.onReply.bind(this)
+    
   }
 
   onSavePost (id, newTitle, newBody) { this.props.dispatch(editPost({ id, title: newTitle, body: newBody })) }
@@ -53,6 +58,8 @@ export class PostsContainer extends Component {
   onVoteUpComment (id) { this.props.dispatch(voteComment({ id, upVote: true })) }
   onVoteDownComment (id) { this.props.dispatch(voteComment({ id, upVote: false })) }
 
+  onReply (parentId) { this.props.dispatch(newCommentShow(parentId)) }
+
   render () {
     return (
       <div className='posts-container'>
@@ -69,6 +76,7 @@ export class PostsContainer extends Component {
                 onDelete={this.onDeletePost}
                 onVoteUp={() => { this.onVoteUpPost(postId) }}
                 onVoteDown={() => { this.onVoteDownPost(postId) }}
+                onReply={() => { this.onReply(postId) }}
               />
               <div className='posts-comments'>
                 {Object.keys(this.props.comments)
@@ -85,6 +93,7 @@ export class PostsContainer extends Component {
                       onVoteUp={() => { this.onVoteUpComment(c.id) }}
                       onVoteDown={() => { this.onVoteDownComment(c.id) }}
                       update={this.props.updates[c.id]}
+                      onReply={() => { this.onReply(postId) }}
                     />
                     )
                   )

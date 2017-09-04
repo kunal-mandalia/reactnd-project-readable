@@ -58,6 +58,7 @@ class Comment extends Component {
               onCancel={this.onCancel}
               onSave={ () => { this.props.onSave(this.props.id, this.state.editBody) }}
               onDelete={() => { this.props.onDelete(this.props.id) }}
+              onReply={this.props.onReply}
               hideCategory
             />
           </div>
