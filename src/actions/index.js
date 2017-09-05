@@ -119,7 +119,7 @@ export const createCommentSuccess = comment => ({ type: c.CREATE_COMMENT_SUCCESS
 export const createComment = (comment) => {
   return (dispatch) => {
     dispatch(createCommentRequest(comment))
-    axios.post(`${c.API}/comments/`)
+    axios.post(`${c.API}/comments/`, comment)
     .then((response) => { dispatch(createCommentSuccess(response.data)) })
     .catch((error) => { dispatch(createCommentError(error)) })
   }

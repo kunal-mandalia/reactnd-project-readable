@@ -200,6 +200,10 @@ const reducer = (state = initialState, action) => {
         comments: {
           ...state.comments,
           [action.comment.id]: action.comment
+        },
+        newComment: {
+          ...state.newComment,
+          show: false
         }
       }
 

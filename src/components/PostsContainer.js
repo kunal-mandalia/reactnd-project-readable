@@ -100,7 +100,9 @@ export class PostsContainer extends Component {
                     )
                   )
                 }
-                <NewComment parentId={postId} />
+                <NewComment
+                  parentId={postId}
+                />
               </div>
             </div>
           )
