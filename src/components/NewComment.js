@@ -45,7 +45,7 @@ export class NewComment extends Component {
         <div className='action-bar'>
           [
             <a className={`action-bar-action ${this.state.body === '' ? 'disabled-link' : ''}`} onClick={this.onSave}> save </a> | 
-            <a className='action-bar-action' onClick={() => { this.props.dispatch(newCommentHide()) }}> cancel </a>
+            <a className='action-bar-action' onClick={this.props.newCommentHide}> cancel </a>
           ]
         </div>
       </div>
@@ -59,6 +59,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   dispatch,
+  newCommentHide: () => dispatch(newCommentHide()),
   createComment: comment => dispatch(createComment(comment))
 })
 

@@ -1,3 +1,4 @@
+import React from 'react'
 import { NewComment } from './NewComment'
 import { mount } from 'enzyme'
 import renderer from 'react-test-renderer'
@@ -7,9 +8,12 @@ const mockFnOnCancel = jest.fn()
 
 const props = {
   parentId: `8tu4bsun805n8un48ve89`,
-  show: false,
   onSave: mockFnOnSave,
-  onCancel: mockFnOnCancel
+  onCancel: mockFnOnCancel,
+  newComment: {
+    show: false,
+    parentId: `8tu4bsun805n8un48ve89`
+  }
 }
 
 describe(`<NewComment .../>`, () => {
