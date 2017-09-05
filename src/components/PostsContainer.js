@@ -18,6 +18,8 @@ import {
   newCommentHide,
 } from '../actions/index.js'
 
+import NewComment from './NewComment'
+
 export class PostsContainer extends Component {
   constructor (props) {
     super(props)
@@ -98,6 +100,7 @@ export class PostsContainer extends Component {
                     )
                   )
                 }
+                <NewComment parentId={postId} />
               </div>
             </div>
           )
