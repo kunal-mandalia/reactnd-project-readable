@@ -22,16 +22,16 @@ import NewComment from './NewComment'
 
 export class PostsContainer extends Component {
 
-  editPost = (id, newTitle, newBody) => { this.props.editPost({ id, title: newTitle, body: newBody }) }
+  editPost = (id, newTitle, newBody) => { this.props.editPost(id, newTitle, newBody) }
   deletePost = (id) => { this.props.deletePost(id) }
   beginEditPost = (id) => { this.props.beginEditPost(id) }
   endEditPost = (id) => { this.props.endEditPost(id) }
   beginEditComment = (id) => { this.props.beginEditComment(id) }
   endEditComment = (id) => { this.props.endEditComment(id) }
-  editComment = (id, newBody) => { this.props.editComment({ id, body: newBody }) }
+  editComment = (id, newBody) => { this.props.editComment(id, newBody) }
   deleteComment = (id) => { this.props.deleteComment(id) }
-  votePost = (id, upVote) => { this.props.votePost({ id, upVote }) }
-  voteComment = (id, upVote) => { this.props.voteComment({ id, upVote }) }
+  votePost = (id, upVote) => { this.props.votePost(id, upVote) }
+  voteComment = (id, upVote) => { this.props.voteComment(id, upVote) }
   newCommentShow = (parentId) => { this.props.newCommentShow(parentId) }
 
   render () {

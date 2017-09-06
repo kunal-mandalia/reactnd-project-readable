@@ -53,13 +53,14 @@ export const editPost = ({ id, title, body }) => {
   }
 }
 
-export const editCommentRequest = ({ id, title, body }) => ({ type: c.EDIT_COMMENT_REQUEST, id, title, body })
+export const editCommentRequest = ({ id, body }) => ({ type: c.EDIT_COMMENT_REQUEST, id, body })
 export const editCommentError = (error) => ({ type: c.EDIT_COMMENT_ERROR, error })
 export const editCommentSuccess = (comment) => ({ type: c.EDIT_COMMENT_SUCCESS, comment })
-export const editComment = ({ id, title, body }) => {
+export const editComment = ({ id, body }) => {
+  debugger
   return (dispatch) => {
-    dispatch(editCommentRequest({ id, title, body }))
-    axios.put(`${c.API}/comments/${id}`, { title, body })
+    dispatch(editCommentRequest({ id, body }))
+    axios.put(`${c.API}/comments/${id}`, { body })
     .then((response) => { dispatch(editCommentSuccess(response.data)) })
     .catch((error) => { dispatch(editCommentError(error)) })
   }
