@@ -48,6 +48,7 @@ class Comment extends Component {
               onChange={this.handleChangeBody}
               editMode={editMode}
               multiline
+              autoFocus
             />
             <ActionBar
               date={this.props.timestamp}

@@ -62,6 +62,7 @@ class Post extends Component {
               onChange={this.handleChangeBody}
               editMode={editMode}
               multiline
+              autoFocus
             />
             <ActionBar
               id={this.props.id}

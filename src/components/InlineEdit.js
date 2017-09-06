@@ -11,6 +11,7 @@ const InlineEdit = ({ editMode, value, onChange, className, multiline, autoFocus
       value={value}
       onChange={onChange}
       autoFocus={autoFocus}
+      ref={textarea => textarea && (autoFocus && textarea.focus())}
     />
   ) : (
     <div

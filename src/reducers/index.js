@@ -224,6 +224,22 @@ const reducer = (state = initialState, action) => {
           parentId: ''
         }
       }
+    
+    case c.NEW_POST_SHOW:
+      return {
+        ...state,
+        newPost: {
+          show: true
+        }
+      }
+
+    case c.NEW_POST_HIDE:
+      return {
+        ...state,
+        newPost: {
+          show: false
+        }
+      }
     default:
       return state
   }
