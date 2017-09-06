@@ -15,7 +15,8 @@ const ActionBar = ({
   onCancel,
   onDelete,
   onEdit,
-  onSave
+  onSave,
+  onReply,
 }) => {
   const since = friendlyDurationSince(Date.now(), date)
   return (
@@ -27,14 +28,17 @@ const ActionBar = ({
       {editMode ? (
         <span className='action-bar-actions'>
           [ 
-          <a className='action-bar-action' onClick={() => { onSave(id, editTitle, editBody) }}> save </a> | 
-          <a className='action-bar-action' onClick={() => { onDelete(id) }}> delete </a> | 
-          <a className='action-bar-action' onClick={() => { onCancel(id) }}> cancel </a>
+            <a className='action-bar-action' onClick={() => { onSave(id, editTitle, editBody) }}> save </a> | 
+            <a className='action-bar-action' onClick={() => { onDelete(id) }}> delete </a> | 
+            <a className='action-bar-action' onClick={() => { onCancel(id) }}> cancel </a>
           ]
         </span>
       ) : (
-        <span className='action-bar-actions'>        
-          [<a className='action-bar-action' onClick={() => { onEdit(id) }}> edit </a>]
+        <span className='action-bar-actions'>
+          [
+            <a className='action-bar-action' onClick={() => { onEdit(id) }}> edit </a> | 
+            <a className='action-bar-action' onClick={onReply}> reply </a>
+          ]
         </span>
       )}
     </div>
@@ -57,7 +61,8 @@ ActionBar.propTypes = {
   onEdit: PropTypes.func,
   onSave: PropTypes.func,
   onDelete: PropTypes.func,
-  onCancel: PropTypes.func
+  onCancel: PropTypes.func,
+  onReply: PropTypes.func,
 }
 
 export default ActionBar

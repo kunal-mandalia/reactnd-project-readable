@@ -5,7 +5,14 @@ const initialState = {
   categories: [],
   comments: [],
   posts: [],
-  updates: {}
+  updates: {},
+  newComment: {
+    show: false,
+    parentId: '',
+  },
+  newPost: {
+    show: false,
+  }
 }
 
 const updatePost = ({ state, post, update }) => ({
@@ -187,6 +194,52 @@ const reducer = (state = initialState, action) => {
         id: action.id
       })
 
+    case c.CREATE_COMMENT_SUCCESS:
+      return {
+        ...state,
+        comments: {
+          ...state.comments,
+          [action.comment.id]: action.comment
+        },
+        newComment: {
+          ...state.newComment,
+          show: false
+        }
+      }
+
+    case c.NEW_COMMENT_SHOW:
+      return {
+        ...state,
+        newComment: {
+          show: true,
+          parentId: action.parentId
+        }
+      }
+
+    case c.NEW_COMMENT_HIDE:
+      return {
+        ...state,
+        newComment: {
+          show: false,
+          parentId: ''
+        }
+      }
+    
+    case c.NEW_POST_SHOW:
+      return {
+        ...state,
+        newPost: {
+          show: true
+        }
+      }
+
+    case c.NEW_POST_HIDE:
+      return {
+        ...state,
+        newPost: {
+          show: false
+        }
+      }
     default:
       return state
   }

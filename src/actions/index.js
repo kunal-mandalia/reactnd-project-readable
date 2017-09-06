@@ -53,13 +53,14 @@ export const editPost = ({ id, title, body }) => {
   }
 }
 
-export const editCommentRequest = ({ id, title, body }) => ({ type: c.EDIT_COMMENT_REQUEST, id, title, body })
+export const editCommentRequest = ({ id, body }) => ({ type: c.EDIT_COMMENT_REQUEST, id, body })
 export const editCommentError = (error) => ({ type: c.EDIT_COMMENT_ERROR, error })
 export const editCommentSuccess = (comment) => ({ type: c.EDIT_COMMENT_SUCCESS, comment })
-export const editComment = ({ id, title, body }) => {
+export const editComment = ({ id, body }) => {
+  debugger
   return (dispatch) => {
-    dispatch(editCommentRequest({ id, title, body }))
-    axios.put(`${c.API}/comments/${id}`, { title, body })
+    dispatch(editCommentRequest({ id, body }))
+    axios.put(`${c.API}/comments/${id}`, { body })
     .then((response) => { dispatch(editCommentSuccess(response.data)) })
     .catch((error) => { dispatch(editCommentError(error)) })
   }
@@ -113,8 +114,23 @@ export const deleteComment = (id) => {
   }
 }
 
+export const createCommentRequest = comment => ({ type: c.CREATE_COMMENT_REQUEST, comment })
+export const createCommentError = error => ({ type: c.CREATE_COMMENT_ERROR, error })
+export const createCommentSuccess = comment => ({ type: c.CREATE_COMMENT_SUCCESS, comment })
+export const createComment = (comment) => {
+  return (dispatch) => {
+    dispatch(createCommentRequest(comment))
+    axios.post(`${c.API}/comments/`, comment)
+    .then((response) => { dispatch(createCommentSuccess(response.data)) })
+    .catch((error) => { dispatch(createCommentError(error)) })
+  }
+}
+
 export const beginEditPost = id => ({ type: c.EDIT_POST_BEGIN, id })
 export const endEditPost = id => ({ type: c.EDIT_POST_END, id })
 
 export const beginEditComment = id => ({ type: c.EDIT_COMMENT_BEGIN, id })
 export const endEditComment = id => ({ type: c.EDIT_COMMENT_END, id })
+
+export const newCommentShow = parentId => ({ type: c.NEW_COMMENT_SHOW, parentId })
+export const newCommentHide = () => ({ type: c.NEW_COMMENT_HIDE })

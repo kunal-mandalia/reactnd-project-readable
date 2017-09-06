@@ -14,44 +14,25 @@ import {
   voteComment,
   deletePost,
   deleteComment,
+  newCommentShow,
+  newCommentHide,
 } from '../actions/index.js'
 
+import NewComment from './NewComment'
+
 export class PostsContainer extends Component {
-  constructor (props) {
-    super(props)
 
-    this.onEditPost = this.onEditPost.bind(this)
-    this.onCancelPost = this.onCancelPost.bind(this)
-    this.onSavePost = this.onSavePost.bind(this)
-    this.onDeletePost = this.onDeletePost.bind(this)
-
-    this.onEditComment = this.onEditComment.bind(this)
-    this.onCancelComment = this.onCancelComment.bind(this)
-    this.onSaveComment = this.onSaveComment.bind(this)
-
-    this.onVoteUpPost = this.onVoteUpPost.bind(this)
-    this.onVoteDownPost = this.onVoteDownPost.bind(this)
-    this.onVoteUpComment = this.onVoteUpComment.bind(this)
-    this.onVoteDownComment = this.onVoteDownComment.bind(this)
-    this.onDeletePost = this.onDeletePost.bind(this)
-    this.onDeleteComment = this.onDeleteComment.bind(this)
-  }
-
-  onSavePost (id, newTitle, newBody) { this.props.dispatch(editPost({ id, title: newTitle, body: newBody })) }
-  onDeletePost (id) { this.props.dispatch(deletePost(id)) }
-  onEditPost (id) { this.props.dispatch(beginEditPost(id)) }
-  onCancelPost (id) { this.props.dispatch(endEditPost(id)) }
-  
-  onEditComment (id) { this.props.dispatch(beginEditComment(id)) }
-  onCancelComment (id) { this.props.dispatch(endEditComment(id)) }
-  onSaveComment (id, newBody) { this.props.dispatch(editComment({ id, body: newBody })) }
-  onDeleteComment (id) { this.props.dispatch(deleteComment(id)) }
-
-  onVoteUpPost (id) { this.props.dispatch(votePost({ id, upVote: true })) }
-  onVoteDownPost (id) { this.props.dispatch(votePost({ id, upVote: false })) }
-
-  onVoteUpComment (id) { this.props.dispatch(voteComment({ id, upVote: true })) }
-  onVoteDownComment (id) { this.props.dispatch(voteComment({ id, upVote: false })) }
+  editPost = (id, newTitle, newBody) => { this.props.editPost(id, newTitle, newBody) }
+  deletePost = (id) => { this.props.deletePost(id) }
+  beginEditPost = (id) => { this.props.beginEditPost(id) }
+  endEditPost = (id) => { this.props.endEditPost(id) }
+  beginEditComment = (id) => { this.props.beginEditComment(id) }
+  endEditComment = (id) => { this.props.endEditComment(id) }
+  editComment = (id, newBody) => { this.props.editComment(id, newBody) }
+  deleteComment = (id) => { this.props.deleteComment(id) }
+  votePost = (id, upVote) => { this.props.votePost(id, upVote) }
+  voteComment = (id, upVote) => { this.props.voteComment(id, upVote) }
+  newCommentShow = (parentId) => { this.props.newCommentShow(parentId) }
 
   render () {
     return (
@@ -62,13 +43,13 @@ export class PostsContainer extends Component {
               <Post
                 {...this.props.posts[postId]}
                 update={this.props.updates[postId]}
-                dispatch={this.props.dispatch}
-                onEdit={this.onEditPost}
-                onCancel={this.onCancelPost}
-                onSave={this.onSavePost}
-                onDelete={this.onDeletePost}
-                onVoteUp={() => { this.onVoteUpPost(postId) }}
-                onVoteDown={() => { this.onVoteDownPost(postId) }}
+                onEdit={this.beginEditPost}
+                onCancel={this.endEditPost}
+                onSave={this.editPost}
+                onDelete={this.deletePost}
+                onVoteUp={() => { this.votePost(postId, true) }}
+                onVoteDown={() => { this.votePost(postId, false) }}
+                onReply={() => { this.newCommentShow(postId) }}
               />
               <div className='posts-comments'>
                 {Object.keys(this.props.comments)
@@ -78,17 +59,21 @@ export class PostsContainer extends Component {
                     <Comment
                       key={c.id}
                       {...c}
-                      onEdit={this.onEditComment}
-                      onCancel={this.onCancelComment}
-                      onSave={this.onSaveComment}
-                      onDelete={this.onDeleteComment}
-                      onVoteUp={() => { this.onVoteUpComment(c.id) }}
-                      onVoteDown={() => { this.onVoteDownComment(c.id) }}
+                      onEdit={this.beginEditComment}
+                      onCancel={this.endEditComment}
+                      onSave={this.editComment}
+                      onDelete={this.deleteComment}
+                      onVoteUp={() => { this.voteComment(c.id, true) }}
+                      onVoteDown={() => { this.voteComment(c.id, false) }}
                       update={this.props.updates[c.id]}
+                      onReply={() => { this.newCommentShow(postId) }}
                     />
                     )
                   )
                 }
+                <NewComment
+                  parentId={postId}
+                />
               </div>
             </div>
           )
@@ -105,7 +90,17 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  dispatch,
+  editPost: (id, newTitle, newBody) => dispatch(editPost({ id, title: newTitle, body: newBody })),
+  deletePost: (id) => dispatch(deletePost(id)),
+  beginEditPost: (id) => dispatch(beginEditPost(id)),
+  endEditPost: (id) => dispatch(endEditPost(id)),
+  beginEditComment: (id) => dispatch(beginEditComment(id)),
+  endEditComment: (id) => dispatch(endEditComment(id)),
+  editComment: (id, newBody) => dispatch(editComment({ id, body: newBody })),
+  deleteComment: (id) => dispatch(deleteComment(id)),
+  votePost: (id, upVote) => dispatch(votePost({ id, upVote })),
+  voteComment: (id, upVote) => dispatch(voteComment({ id, upVote })),
+  newCommentShow: (parentId) => dispatch(newCommentShow(parentId))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostsContainer)

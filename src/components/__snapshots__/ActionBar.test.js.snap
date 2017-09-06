@@ -37,6 +37,13 @@ exports[`<ActionBar .../> should match snapshot 1`] = `
     >
        edit 
     </a>
+     |
+    <a
+      className="action-bar-action"
+      onClick={undefined}
+    >
+       reply 
+    </a>
     ]
   </span>
 </div>

@@ -12,3 +12,8 @@
   cursor: pointer;
   color: #222222;
 }
+
+.disabled-link:hover {
+  color: inherit;
+  cursor: not-allowed;
+}

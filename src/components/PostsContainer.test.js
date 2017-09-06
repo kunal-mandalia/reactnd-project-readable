@@ -1,6 +1,6 @@
 import React from 'react'
 import { PostsContainer } from './PostsContainer'
-import { mount } from 'enzyme'
+import { shallow } from 'enzyme'
 import renderer from 'react-test-renderer'
 
 const posts = {
@@ -49,20 +49,29 @@ const comments = {
   }
 }
 
+const mockFn = jest.fn()
+const props = {
+  editPost: mockFn,
+  deletePost: mockFn,
+  beginEditPost: mockFn,
+  beginEditComment: mockFn,
+  endEditComment: mockFn,
+  editComment: mockFn,
+  deleteComment: mockFn,
+  votePost: mockFn,
+  voteComment: mockFn,
+  newCommentShow: mockFn
+}
+
 const updates = {}
 
 describe(`PostsContainer`, () => {
-  const wrapper = mount(<PostsContainer posts={posts} comments={comments} updates={updates} />)
+  const wrapper = shallow(<PostsContainer posts={posts} comments={comments} updates={updates} {...props} />)
   it(`should render ${Object.keys(posts).length} post(s)`, () => {
     expect(wrapper.find('Post')).toHaveLength(Object.keys(posts).length)
   })
 
   it(`should render ${Object.keys(comments).length} comment(s)`, () => {
     expect(wrapper.find('Comment')).toHaveLength(Object.keys(comments).length)
-  })
-
-  it(`should match snapshot`, () => {
-    const tree = renderer.create(<PostsContainer posts={posts} comments={comments} updates={updates} />).toJSON()
-    expect(tree).toMatchSnapshot()
   })
 })

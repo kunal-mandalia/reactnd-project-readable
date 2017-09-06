@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NewComment .../> should match snapshot 1`] = `
+<div
+  className="hidden"
+>
+  <textarea
+    autoFocus={true}
+    className="edit-input edit-input"
+    cols="50"
+    onChange={[Function]}
+    rows="4"
+    value=""
+  />
+  <div
+    className="action-bar"
+  >
+    [
+    <a
+      className="action-bar-action disabled-link"
+      onClick={[Function]}
+    >
+       save 
+    </a>
+     |
+    <a
+      className="action-bar-action"
+      onClick={undefined}
+    >
+       cancel 
+    </a>
+    ]
+  </div>
+</div>
+`;

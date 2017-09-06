@@ -48,6 +48,7 @@ class Comment extends Component {
               onChange={this.handleChangeBody}
               editMode={editMode}
               multiline
+              autoFocus
             />
             <ActionBar
               date={this.props.timestamp}
@@ -58,6 +59,7 @@ class Comment extends Component {
               onCancel={this.onCancel}
               onSave={ () => { this.props.onSave(this.props.id, this.state.editBody) }}
               onDelete={() => { this.props.onDelete(this.props.id) }}
+              onReply={this.props.onReply}
               hideCategory
             />
           </div>

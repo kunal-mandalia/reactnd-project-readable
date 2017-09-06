@@ -62,6 +62,7 @@ class Post extends Component {
               onChange={this.handleChangeBody}
               editMode={editMode}
               multiline
+              autoFocus
             />
             <ActionBar
               id={this.props.id}
@@ -75,6 +76,8 @@ class Post extends Component {
               onSave={this.props.onSave}
               onDelete={this.props.onDelete}
               onCancel={this.onCancel}
+              onReply={this.props.onReply}
+              onReplyCancel={this.props.onReplyCancel}
             />
           </div>
         </div>
@@ -103,7 +106,8 @@ Post.propTypes = {
   onDelete: PropTypes.func,
   onVoteUp: PropTypes.func,
   onVoteDown: PropTypes.func,
-  update: PropTypes.object
+  update: PropTypes.object,
+  onReply: PropTypes.func,
 }
 
 export default Post
