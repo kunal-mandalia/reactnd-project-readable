@@ -114,6 +114,18 @@ export const deleteComment = (id) => {
   }
 }
 
+export const createPostRequest = post => ({ type: c.CREATE_POST_REQUEST, post })
+export const createPostError = error => ({ type: c.CREATE_POST_ERROR, error })
+export const createPostSuccess = post => ({ type: c.CREATE_POST_SUCCESS, post })
+export const createPost = (post) => {
+  return (dispatch) => {
+    dispatch(createPostRequest(post))
+    axios.post(`${c.API}/posts/`, post)
+    .then((response) => { dispatch(createPostSuccess(response.data)) })
+    .catch((error) => { dispatch(createPostError(error)) })
+  }
+}
+
 export const createCommentRequest = comment => ({ type: c.CREATE_COMMENT_REQUEST, comment })
 export const createCommentError = error => ({ type: c.CREATE_COMMENT_ERROR, error })
 export const createCommentSuccess = comment => ({ type: c.CREATE_COMMENT_SUCCESS, comment })
@@ -131,6 +143,9 @@ export const endEditPost = id => ({ type: c.EDIT_POST_END, id })
 
 export const beginEditComment = id => ({ type: c.EDIT_COMMENT_BEGIN, id })
 export const endEditComment = id => ({ type: c.EDIT_COMMENT_END, id })
+
+export const newPostShow = () => ({ type: c.NEW_POST_SHOW })
+export const newPostHide = () => ({ type: c.NEW_POST_HIDE })
 
 export const newCommentShow = parentId => ({ type: c.NEW_COMMENT_SHOW, parentId })
 export const newCommentHide = () => ({ type: c.NEW_COMMENT_HIDE })
