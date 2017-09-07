@@ -12,6 +12,7 @@ const initialState = {
   },
   newPost: {
     show: false,
+    complete: false,
   }
 }
 
@@ -207,12 +208,34 @@ const reducer = (state = initialState, action) => {
         }
       }
 
+    case c.CREATE_POST_REQUEST:
+      return {
+        ...state,
+        newPost: {
+          ...state.newPost,
+          [action.post.id]: c.CREATE_POST_REQUEST
+        }
+      }
+
     case c.CREATE_POST_SUCCESS:
       return {
         ...state,
         posts: {
           ...state.posts,
           [action.post.id]: action.post
+        },
+        newPost: {
+          ...state.newPost,
+          [action.post.id]: c.CREATE_POST_SUCCESS
+        }
+      }
+
+    case c.CREATE_POST_ERROR:
+      return {
+        ...state,
+        newPost: {
+          ...state.newPost,
+          [action.post.id]: c.CREATE_POST_ERROR
         }
       }
 

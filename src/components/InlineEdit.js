@@ -2,9 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import '../styles/InlineEdit.css';
 
-const InlineEdit = ({ editMode, value, onChange, className, multiline, autoFocus }) => (
+const InlineEdit = ({ placeholder, editMode, value, onChange, className, multiline, autoFocus }) => (
   editMode ? (
     <textarea
+      placeholder={placeholder}
       className={`edit-input ${className}`}
       rows={multiline ? '4' : '1'}
       cols='50'
@@ -21,11 +22,13 @@ const InlineEdit = ({ editMode, value, onChange, className, multiline, autoFocus
 )
 
 InlineEdit.defaultProps = {
+  placeholder: '',
   editMode: false,
   multiline: false
 }
 
 InlineEdit.propTypes = {
+  placeholder: PropTypes.string,
   editMode: PropTypes.bool.isRequired,
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
