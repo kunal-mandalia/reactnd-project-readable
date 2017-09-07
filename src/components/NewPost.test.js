@@ -2,11 +2,12 @@ import React from 'react'
 import { shallow, mount } from 'enzyme'
 import { NewPost } from './NewPost'
 
-const mockFnOnCreateComment = jest.fn()
+const mockFnOnCreatePost = jest.fn()
 
 const props = {
   categories: {},
-  createComment: mockFnOnCreateComment
+  createPost: mockFnOnCreatePost,
+  newPost: {}
 }
 
 describe(`<NewPost .../>`, () => {

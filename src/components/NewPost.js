@@ -4,57 +4,89 @@ import InlineEdit from './InlineEdit'
 import { connect } from 'react-redux'
 import { createPost } from '../actions/index'
 import { v1 as uuid } from 'uuid'
-// import '../styles/NewPost.css'
+import '../styles/NewPost.css'
 import '../styles/ActionBar.css'
+import { CREATE_POST_SUCCESS } from '../constants/index'
 
 export class NewPost extends Component {
-  state = {
-    title: ``,
-    body: ``,
-    category: ``,
-    show: false
+  constructor (props) {
+    super(props)
+    const id = uuid()    
+    this.state = {
+      id,
+      title: ``,
+      body: ``,
+      category: ``,
+      show: false
+    }
   }
 
   handleTitleChange = (e) => { this.setState({ title: e.target.value })}
   handleBodyChange = (e) => { this.setState({ body: e.target.value }) }
+  handleCategoryChange = (e) => { this.setState({ category: e.target.value }) }
   toggleShow = () => { this.setState(state => ({ show: !state.show })) }
   onSave = () => {
-    if (this.state.title !== '' && this.state.body !== '') {
-      const id = uuid()
+    const { id, title, body, category } = this.state
+    if (title !== '' && body !== '' && category !== '') {
       const timestamp = Date.now()
       const post = {
         id,
-        title: this.state.title,        
-        body: this.state.body,
+        title,        
+        body,
         author: `theThingyBob`,
-        category: `react`,
+        category,
         timestamp
       }
       this.props.createPost(post)
     }
   }
 
+  componentWillReceiveProps (props) {
+    if (props.newPost[this.state.id] === CREATE_POST_SUCCESS) {
+      const id = uuid()    
+      this.state = {
+        id,
+        title: ``,
+        body: ``,
+        category: ``,
+        show: false
+      }
+    }
+  }
+
   render () {
+    const { id, title, body, category, show } = this.state
     return (
       <div className='new-post'>
-        {this.state.show ? (
+        {show ? (
           <div className='new-post-expanded'>
             <InlineEdit
+              placeholder='Post Title*'
               editMode={true}
-              value={this.state.title}
+              value={title}
               onChange={this.handleTitleChange.bind(this)}
-              className={`input-title ${this.state.title !== '' ? 'edit-input-changed' : 'edit-input'}`}
+              className={`input-title ${title !== '' ? 'edit-input-changed' : 'edit-input'}`}
             />
             <InlineEdit
+              placeholder='Body*'
               editMode={true}
-              value={this.state.body}
+              value={body}
               onChange={this.handleBodyChange.bind(this)}
               multiline
-              className={`input-body ${this.state.body !== '' ? 'edit-input-changed' : 'edit-input'}`}
+              className={`input-body ${body !== '' ? 'edit-input-changed' : 'edit-input'}`}
+            />
+            <InlineEdit
+              placeholder='Category* e.g. react'
+              editMode={true}
+              value={category}
+              onChange={this.handleCategoryChange.bind(this)}
+              className={`input-category ${category !== '' ? 'edit-input-changed' : 'edit-input'}`}
             />
             <div className='action-bar'>
               [
-                <a id='save' className={`action-bar-action ${this.state.body === '' ? 'disabled-link' : ''}`} onClick={this.onSave.bind(this)}> save </a> | 
+                <a
+                  id='save'
+                  className={`action-bar-action ${(title === '' || body === '' || category === '') ? 'disabled-link' : ''}`} onClick={this.onSave.bind(this)}> save </a> | 
                 <a className='action-bar-action' onClick={this.toggleShow.bind(this)}> cancel </a>
               ]
             </div>
@@ -74,7 +106,8 @@ export class NewPost extends Component {
 }
 
 const mapStateToProps = state => ({
-  categories: state.categories
+  categories: state.categories,
+  newPost: state.newPost
 })
 
 const mapDispatchToProps = dispatch => ({

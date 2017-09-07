@@ -1,0 +1,12 @@
+.new-post {
+  padding: 20px;
+  
+}
+
+.new-post-collapsed {
+  float: right;
+  /* margin: 15px 0; */
+}
+
+.new-post-expanded {
+}

@@ -58,7 +58,6 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  dispatch,
   newCommentHide: () => dispatch(newCommentHide()),
   createComment: comment => dispatch(createComment(comment))
 })

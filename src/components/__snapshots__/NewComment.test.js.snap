@@ -9,6 +9,7 @@ exports[`<NewComment .../> should match snapshot 1`] = `
     className="edit-input edit-input"
     cols="50"
     onChange={[Function]}
+    placeholder=""
     rows="4"
     value=""
   />
