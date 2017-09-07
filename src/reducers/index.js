@@ -207,6 +207,15 @@ const reducer = (state = initialState, action) => {
         }
       }
 
+    case c.CREATE_POST_SUCCESS:
+      return {
+        ...state,
+        posts: {
+          ...state.posts,
+          [action.post.id]: action.post
+        }
+      }
+
     case c.NEW_COMMENT_SHOW:
       return {
         ...state,

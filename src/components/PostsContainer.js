@@ -17,7 +17,7 @@ import {
   newCommentShow,
   newCommentHide,
 } from '../actions/index.js'
-
+import NewPost from './NewPost'
 import NewComment from './NewComment'
 
 export class PostsContainer extends Component {
@@ -37,6 +37,7 @@ export class PostsContainer extends Component {
   render () {
     return (
       <div className='posts-container'>
+        <NewPost />
         {Object.keys(this.props.posts).map(postId => {
           return (
             <div key={postId}>
