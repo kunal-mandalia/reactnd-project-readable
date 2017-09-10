@@ -19,13 +19,13 @@ export const friendlyDurationSince = (dateFuture, datePast) => {
   }
 }
 
-export const sortBy = ({ data, dataType, by, descending = true }) => {
+export const sortBy = ({ data, by, descending = true }) => {
   if (typeof (data) !== 'object' && (by !== 'date' || by !== 'votes')) {
     throw new Error(`sortBy encountered invalid args: ${JSON.stringify({ by, descending })}`)
   } else {
     // sort by post date descending
     const property = by === 'date' ? 'timestamp' : 'voteScore'
-    const compare = (a,b, descending) => descending ? ( a < b ) : ( a > b ) 
+    const compare = (a,b, descending) => descending ? ( b - a ) : ( a - b )
     return Object.keys(data).map(k => data[k]).sort((d1, d2) => compare(d1[property], d2[property], descending) )
   }
 }
