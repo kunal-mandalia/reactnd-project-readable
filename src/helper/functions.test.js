@@ -59,7 +59,7 @@ describe('helper functions', () => {
         category: 'react',
         voteScore: 6,
         deleted: false
-      },
+      }
     ]
 
     const postsByDateAscending = [
@@ -108,23 +108,153 @@ describe('helper functions', () => {
       }
     ]
 
-    const postsByVotesAscending = []
+    const postsByVotesAscending = [
+      {
+        id: '6ni6ok3ym7mf1p33lnez',
+        timestamp: 1468479767190,
+        title: 'Learn Redux in 10 minutes!',
+        body: 'Just kidding. It takes more than 10 minutes to learn technology.',
+        author: 'thingone',
+        category: 'redux',
+        voteScore: -5,
+        deleted: false
+      },
+      {
+        id: '8xf0y6ziyjabvozdd253nd',
+        timestamp: 1467166872634,
+        title: 'Udacity is the best place to learn React',
+        body: 'Everyone says so after all.',
+        author: 'thingtwo',
+        category: 'react',
+        voteScore: 6,
+        deleted: false
+      }
+    ]
     
-    const comments = []
-    const commentsByDateDescending = []
-    const commentsByDateAscending = []
-    const commentsByVotesDescending = []
-    const commentsByVotesAscending = []
+    const comments = {
+      "894tuq4ut84ut8v4t8wun89g": {
+        id: '894tuq4ut84ut8v4t8wun89g',
+        parentId: "8xf0y6ziyjabvozdd253nd",
+        timestamp: 1468166872634,
+        body: 'Hi there! I am a COMMENT.',
+        author: 'thingtwo',
+        voteScore: 6,
+        deleted: false,
+        parentDeleted: false 
+      },
+      "8tu4bsun805n8un48ve89": {
+        id: '8tu4bsun805n8un48ve89',
+        parentId: "8xf0y6ziyjabvozdd253nd",
+        timestamp: 1469479767190,
+        body: 'Comments. Are. Cool.',
+        author: 'thingone',
+        voteScore: -5,
+        deleted: false,
+        parentDeleted: false
+      }
+    }
+
+    const commentsByDateDescending = [
+      {
+        id: '8tu4bsun805n8un48ve89',
+        parentId: "8xf0y6ziyjabvozdd253nd",
+        timestamp: 1469479767190,
+        body: 'Comments. Are. Cool.',
+        author: 'thingone',
+        voteScore: -5,
+        deleted: false,
+        parentDeleted: false
+      },
+      {
+        id: '894tuq4ut84ut8v4t8wun89g',
+        parentId: "8xf0y6ziyjabvozdd253nd",
+        timestamp: 1468166872634,
+        body: 'Hi there! I am a COMMENT.',
+        author: 'thingtwo',
+        voteScore: 6,
+        deleted: false,
+        parentDeleted: false 
+      }
+    ]
+
+    const commentsByDateAscending = [
+      {
+        id: '894tuq4ut84ut8v4t8wun89g',
+        parentId: "8xf0y6ziyjabvozdd253nd",
+        timestamp: 1468166872634,
+        body: 'Hi there! I am a COMMENT.',
+        author: 'thingtwo',
+        voteScore: 6,
+        deleted: false,
+        parentDeleted: false 
+      },
+      {
+        id: '8tu4bsun805n8un48ve89',
+        parentId: "8xf0y6ziyjabvozdd253nd",
+        timestamp: 1469479767190,
+        body: 'Comments. Are. Cool.',
+        author: 'thingone',
+        voteScore: -5,
+        deleted: false,
+        parentDeleted: false
+      }
+    ]
+
+    const commentsByVotesDescending = [
+      {
+        id: '894tuq4ut84ut8v4t8wun89g',
+        parentId: "8xf0y6ziyjabvozdd253nd",
+        timestamp: 1468166872634,
+        body: 'Hi there! I am a COMMENT.',
+        author: 'thingtwo',
+        voteScore: 6,
+        deleted: false,
+        parentDeleted: false 
+      },
+      {
+        id: '8tu4bsun805n8un48ve89',
+        parentId: "8xf0y6ziyjabvozdd253nd",
+        timestamp: 1469479767190,
+        body: 'Comments. Are. Cool.',
+        author: 'thingone',
+        voteScore: -5,
+        deleted: false,
+        parentDeleted: false
+      }
+    ]
+
+    const commentsByVotesAscending = [
+      {
+        id: '8tu4bsun805n8un48ve89',
+        parentId: "8xf0y6ziyjabvozdd253nd",
+        timestamp: 1469479767190,
+        body: 'Comments. Are. Cool.',
+        author: 'thingone',
+        voteScore: -5,
+        deleted: false,
+        parentDeleted: false
+      },
+      {
+        id: '894tuq4ut84ut8v4t8wun89g',
+        parentId: "8xf0y6ziyjabvozdd253nd",
+        timestamp: 1468166872634,
+        body: 'Hi there! I am a COMMENT.',
+        author: 'thingtwo',
+        voteScore: 6,
+        deleted: false,
+        parentDeleted: false 
+      }
+    ]
     
     const cases = [
       { input: { data: posts, by: 'date', descending: true }, output: postsByDateDescending },
       { input: { data: posts, by: 'date', descending: false }, output: postsByDateAscending },
-      // { input: { dataType: 'posts', by: 'votes', descending: true }},
-      // { input: { dataType: 'posts', by: 'votes', descending: false }},
-      // { input: { dataType: 'comments', by: 'dates', descending: true }},
-      // { input: { dataType: 'comments', by: 'dates', descending: false }},
-      // { input: { dataType: 'comments', by: 'votes', descending: true }},
-      // { input: { dataType: 'comments', by: 'votes', descending: false }},
+      { input: { data: posts, by: 'votes', descending: true }, output: postsByVotesDescending },
+      { input: { data: posts, by: 'votes', descending: false }, output: postsByVotesAscending },
+      { input: { data: comments, by: 'date', descending: true }, output: commentsByDateDescending },
+      { input: { data: comments, by: 'date', descending: false }, output: commentsByDateAscending },
+      { input: { data: comments, by: 'votes', descending: true }, output: commentsByVotesDescending },
+      { input: { data: comments, by: 'votes', descending: false }, output: commentsByVotesAscending },
     ]
 
     cases.forEach(c => {
