@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Filter .../> should match snapshot 1`] = `
+<div
+  className="filter"
+>
+  <div>
+    <div
+      className="category inactive"
+      onClick={[Function]}
+    >
+      react
+    </div>
+  </div>
+  <div>
+    <div
+      className="category inactive"
+      onClick={[Function]}
+    >
+      redux
+    </div>
+  </div>
+  <div>
+    <div
+      className="category inactive"
+      onClick={[Function]}
+    >
+      udacity
+    </div>
+  </div>
+</div>
+`;

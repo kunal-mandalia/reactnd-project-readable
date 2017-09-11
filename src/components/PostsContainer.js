@@ -37,8 +37,8 @@ export class PostsContainer extends Component {
   newCommentShow = (parentId) => { this.props.newCommentShow(parentId) }
 
   render () {
-    const { posts, comments, sort } = this.props
-    const sortedPosts = sortBy({ data: posts, by: sort.by, descending: sort.descending })
+    const { posts, comments, sort, filter } = this.props
+    const sortedPosts = sortBy({ data: posts, by: sort.by, descending: sort.descending }).filter(p => p.category.includes(filter) )
     const sortedComments = sortBy({ data: comments, by: sort.by, descending: sort.descending })
     return (
       <div className='posts-container'>
@@ -128,7 +128,8 @@ const mapStateToProps = state => ({
   posts: state.posts,
   comments: state.comments,
   updates: state.updates,
-  sort: state.sort
+  sort: state.sort,
+  filter: state.filter
 })
 
 const mapDispatchToProps = dispatch => ({

@@ -17,7 +17,8 @@ const initialState = {
   sort: {
     by: `date`,
     descending: true
-  }
+  },
+  filter: ``
 }
 
 const updatePost = ({ state, post, update }) => ({
@@ -294,6 +295,13 @@ const reducer = (state = initialState, action) => {
           descending: action.descending
         }
       }
+
+    case c.FILTER_BY_CATEGORY:
+      return {
+        ...state,
+        filter: action.category
+      }
+
     default:
       return state
   }
