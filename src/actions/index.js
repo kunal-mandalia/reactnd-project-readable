@@ -149,3 +149,6 @@ export const newPostHide = () => ({ type: c.NEW_POST_HIDE })
 
 export const newCommentShow = parentId => ({ type: c.NEW_COMMENT_SHOW, parentId })
 export const newCommentHide = () => ({ type: c.NEW_COMMENT_HIDE })
+
+export const sortByDate = (descending = true) => ({ type: c.SORT_BY_DATE, descending })
+export const sortByVotes = (descending = true) => ({ type: c.SORT_BY_VOTES, descending })

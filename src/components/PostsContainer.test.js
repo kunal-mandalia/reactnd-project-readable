@@ -51,6 +51,7 @@ const comments = {
 
 const mockFn = jest.fn()
 const props = {
+  sort: { by: 'votes', descending: true },
   editPost: mockFn,
   deletePost: mockFn,
   beginEditPost: mockFn,
