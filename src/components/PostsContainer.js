@@ -77,48 +77,6 @@ export class PostsContainer extends Component {
             </div>            
           </div>
         ))}
-
-        {/* {Object.keys(this.props.posts).map(postId => {
-          return (
-            <div key={postId}>
-              <Post
-                {...this.props.posts[postId]}
-                update={this.props.updates[postId]}
-                onEdit={this.beginEditPost}
-                onCancel={this.endEditPost}
-                onSave={this.editPost}
-                onDelete={this.deletePost}
-                onVoteUp={() => { this.votePost(postId, true) }}
-                onVoteDown={() => { this.votePost(postId, false) }}
-                onReply={() => { this.newCommentShow(postId) }}
-              />
-              <div className='posts-comments'>
-                {Object.keys(this.props.comments)
-                  .map(commentId => this.props.comments[commentId])
-                  .filter(c => c.parentId === postId )
-                  .map(c => (
-                    <Comment
-                      key={c.id}
-                      {...c}
-                      onEdit={this.beginEditComment}
-                      onCancel={this.endEditComment}
-                      onSave={this.editComment}
-                      onDelete={this.deleteComment}
-                      onVoteUp={() => { this.voteComment(c.id, true) }}
-                      onVoteDown={() => { this.voteComment(c.id, false) }}
-                      update={this.props.updates[c.id]}
-                      onReply={() => { this.newCommentShow(postId) }}
-                    />
-                    )
-                  )
-                }
-                <NewComment
-                  parentId={postId}
-                />
-              </div>
-            </div>
-          )
-        })} */}
       </div>
     )
   }
