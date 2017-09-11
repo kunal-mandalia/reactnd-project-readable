@@ -2,7 +2,10 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Post from './Post'
 import Comment from './Comment'
-import '../styles/PostsContainer.css'
+import Sort from './Sort'
+import NewPost from './NewPost'
+import NewComment from './NewComment'
+import { sortBy } from '../helper/functions'
 import {
   editPost,
   editComment,
@@ -17,8 +20,7 @@ import {
   newCommentShow,
   newCommentHide,
 } from '../actions/index.js'
-import NewPost from './NewPost'
-import NewComment from './NewComment'
+import '../styles/PostsContainer.css'
 
 export class PostsContainer extends Component {
 
@@ -35,10 +37,48 @@ export class PostsContainer extends Component {
   newCommentShow = (parentId) => { this.props.newCommentShow(parentId) }
 
   render () {
+    const { posts, comments, sort } = this.props
+    const sortedPosts = sortBy({ data: posts, by: sort.by, descending: sort.descending })
+    const sortedComments = sortBy({ data: comments, by: sort.by, descending: sort.descending })
     return (
       <div className='posts-container'>
+        <Sort />
         <NewPost />
-        {Object.keys(this.props.posts).map(postId => {
+        {sortedPosts.map(p => (
+          <div key={p.id}>
+            <Post
+              {...p}
+              update={this.props.updates[p.id]}
+              onEdit={this.beginEditPost}
+              onCancel={this.endEditPost}
+              onSave={this.editPost}
+              onDelete={this.deletePost}
+              onVoteUp={() => { this.votePost(p.id, true) }}
+              onVoteDown={() => { this.votePost(p.id, false) }}
+              onReply={() => { this.newCommentShow(p.id) }}
+            />
+            <div className='posts-comments'>
+              {sortedComments.filter(c => c.parentId === p.id )
+                .map(c => (
+                  <Comment
+                    key={c.id}
+                    {...c}
+                    onEdit={this.beginEditComment}
+                    onCancel={this.endEditComment}
+                    onSave={this.editComment}
+                    onDelete={this.deleteComment}
+                    onVoteUp={() => { this.voteComment(c.id, true) }}
+                    onVoteDown={() => { this.voteComment(c.id, false) }}
+                    update={this.props.updates[c.id]}
+                    onReply={() => { this.newCommentShow(p.id) }}
+                  />
+              ))}
+              <NewComment parentId={p.id} />
+            </div>            
+          </div>
+        ))}
+
+        {/* {Object.keys(this.props.posts).map(postId => {
           return (
             <div key={postId}>
               <Post
@@ -78,7 +118,7 @@ export class PostsContainer extends Component {
               </div>
             </div>
           )
-        })}
+        })} */}
       </div>
     )
   }
@@ -87,7 +127,8 @@ export class PostsContainer extends Component {
 const mapStateToProps = state => ({
   posts: state.posts,
   comments: state.comments,
-  updates: state.updates
+  updates: state.updates,
+  sort: state.sort
 })
 
 const mapDispatchToProps = dispatch => ({

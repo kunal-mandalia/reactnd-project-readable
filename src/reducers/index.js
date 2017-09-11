@@ -13,6 +13,10 @@ const initialState = {
   newPost: {
     show: false,
     complete: false,
+  },
+  sort: {
+    by: `date`,
+    descending: true
   }
 }
 
@@ -270,6 +274,24 @@ const reducer = (state = initialState, action) => {
         ...state,
         newPost: {
           show: false
+        }
+      }
+    
+    case c.SORT_BY_DATE:
+      return {
+        ...state,
+        sort: {
+          by: 'date',
+          descending: action.descending
+        }
+      }
+
+    case c.SORT_BY_VOTES:
+      return {
+        ...state,
+        sort: {
+          by: 'votes',
+          descending: action.descending
         }
       }
     default:
