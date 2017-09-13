@@ -61,6 +61,7 @@ class Comment extends Component {
               onDelete={() => { this.props.onDelete(this.props.id) }}
               onReply={this.props.onReply}
               hideCategory
+              isAuthor={this.props.isAuthor}
             />
           </div>
         </div>
@@ -86,6 +87,7 @@ Comment.propTypes = {
   onDownvote: PropTypes.func,
   onSave: PropTypes.func,
   onDelete: PropTypes.func,
+  isAuthor: PropTypes.bool
 }
 
 export default Comment

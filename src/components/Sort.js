@@ -46,10 +46,10 @@ export class Sort extends Component {
     const votesIcon = getSortIcon({ sortOption: 'votes', sortBy, sortDescending })
       return (
         <div className='sort'>
-          Sort by [{' '}
+          [{' '}
             <a
               className={`sort-option sort-by-date ${sortBy === 'date' ? 'sort-by-active' : 'sort-by-inactive'}`}
-              onClick={this.onSortByDate}>{dateIcon} Date</a>
+              onClick={this.onSortByDate}>Date {dateIcon} </a>
               {' '}|{' '} 
             <a
               className={`sort-option sort-by-votes ${sortBy === 'votes' ? 'sort-by-active' : 'sort-by-inactive'}`}

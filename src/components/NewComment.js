@@ -21,7 +21,7 @@ export class NewComment extends Component {
       const comment = {
         id,
         body: this.state.body,
-        author: `theThingyBob`,
+        author: this.props.user,
         parentId: this.props.parentId,
         timestamp
       }
@@ -54,7 +54,8 @@ export class NewComment extends Component {
 }
 
 const mapStateToProps = state => ({
-  newComment: state.newComment
+  newComment: state.newComment,
+  user: state.user
 })
 
 const mapDispatchToProps = dispatch => ({

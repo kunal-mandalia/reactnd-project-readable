@@ -33,7 +33,7 @@ export class NewPost extends Component {
         id,
         title,        
         body,
-        author: `theThingyBob`,
+        author: this.props.user,
         category,
         timestamp
       }
@@ -107,7 +107,8 @@ export class NewPost extends Component {
 
 const mapStateToProps = state => ({
   categories: state.categories,
-  newPost: state.newPost
+  newPost: state.newPost,
+  user: state.user
 })
 
 const mapDispatchToProps = dispatch => ({

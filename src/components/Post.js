@@ -78,6 +78,7 @@ class Post extends Component {
               onCancel={this.onCancel}
               onReply={this.props.onReply}
               onReplyCancel={this.props.onReplyCancel}
+              isAuthor={this.props.isAuthor}
             />
           </div>
         </div>
@@ -108,6 +109,7 @@ Post.propTypes = {
   onVoteDown: PropTypes.func,
   update: PropTypes.object,
   onReply: PropTypes.func,
+  isAuthor: PropTypes.bool
 }
 
 export default Post
