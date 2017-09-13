@@ -35,7 +35,7 @@ export class PostsContainer extends Component {
   newCommentShow = (parentId) => { this.props.newCommentShow(parentId) }
 
   render () {
-    const { posts, comments, sort, filter } = this.props
+    const { posts, comments, sort, filter, user } = this.props
     const sortedPosts = sortBy({ data: posts, by: sort.by, descending: sort.descending }).filter(p => p.category.includes(filter) )
     const sortedComments = sortBy({ data: comments, by: sort.by, descending: sort.descending })
     return (
@@ -52,6 +52,7 @@ export class PostsContainer extends Component {
               onVoteUp={() => { this.votePost(p.id, true) }}
               onVoteDown={() => { this.votePost(p.id, false) }}
               onReply={() => { this.newCommentShow(p.id) }}
+              isAuthor={user === p.author}
             />
             <div className='posts-comments'>
               {sortedComments.filter(c => c.parentId === p.id )
@@ -67,6 +68,7 @@ export class PostsContainer extends Component {
                     onVoteDown={() => { this.voteComment(c.id, false) }}
                     update={this.props.updates[c.id]}
                     onReply={() => { this.newCommentShow(p.id) }}
+                    isAuthor={user === c.author}
                   />
               ))}
               <NewComment parentId={p.id} />
@@ -79,6 +81,7 @@ export class PostsContainer extends Component {
 }
 
 const mapStateToProps = state => ({
+  user: state.user,
   posts: state.posts,
   comments: state.comments,
   updates: state.updates,

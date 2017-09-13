@@ -29,3 +29,16 @@
   color: #5e5e5e;
   margin: 0 4px;
 }
+
+.navbar-user {
+  float: right;
+  margin-right: 8vw;
+  margin-top: 2px;
+  font-size: small;
+}
+
+@media (max-width: 720px) {
+  .navbar-categories {
+    display: none;
+  }
+}

@@ -33,13 +33,6 @@ exports[`<ActionBar .../> should match snapshot 1`] = `
     [
     <a
       className="action-bar-action"
-      onClick={[Function]}
-    >
-       edit 
-    </a>
-     |
-    <a
-      className="action-bar-action"
       onClick={undefined}
     >
        reply 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import '../styles/NavbarContainer.css'
 import Filter from './Filter'
+import '../styles/NavbarContainer.css'
 
 export class NavbarContainer extends Component {
   render () {
@@ -11,13 +11,15 @@ export class NavbarContainer extends Component {
         <span className='navbar-categories'>
           <Filter />
         </span>
+        <span className='navbar-user'>Hello, {this.props.user}</span>
       </div>
     )
   }
 }
 
 const mapStateToProps = state => ({
-  categories: state.categories
+  categories: state.categories,
+  user: state.user
 })
 
 const mapDispatchToProps = dispatch => ({ dispatch })

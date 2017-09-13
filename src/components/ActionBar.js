@@ -17,6 +17,7 @@ const ActionBar = ({
   onEdit,
   onSave,
   onReply,
+  isAuthor
 }) => {
   const since = friendlyDurationSince(Date.now(), date)
   return (
@@ -36,8 +37,8 @@ const ActionBar = ({
       ) : (
         <span className='action-bar-actions'>
           [
-            <a className='action-bar-action' onClick={() => { onEdit(id) }}> edit </a> | 
-            <a className='action-bar-action' onClick={onReply}> reply </a>
+            {isAuthor ? <a className='action-bar-action' onClick={() => { onEdit(id) }}> edit </a> :
+            <a className='action-bar-action' onClick={onReply}> reply </a>}
           ]
         </span>
       )}
