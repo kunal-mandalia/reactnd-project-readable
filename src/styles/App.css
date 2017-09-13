@@ -6,3 +6,9 @@
 .hidden {
   display: none;
 }
+
+.app-actions {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 15px;
+}

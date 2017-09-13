@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Filter .../> should match snapshot 1`] = `
+<div
+  className="filter"
+>
+  <span>
+    <span
+      className="filter-category active"
+      onClick={[Function]}
+    >
+       everything
+    </span>
+    <span
+      className="filter-separator"
+    >
+       | 
+    </span>
+  </span>
+  <span>
+    <span
+      className="filter-category inactive"
+      onClick={[Function]}
+    >
+      react
+    </span>
+    <span
+      className="filter-separator"
+    >
+       | 
+    </span>
+  </span>
+  <span>
+    <span
+      className="filter-category inactive"
+      onClick={[Function]}
+    >
+      redux
+    </span>
+    <span
+      className="filter-separator"
+    >
+       | 
+    </span>
+  </span>
+  <span>
+    <span
+      className="filter-category inactive"
+      onClick={[Function]}
+    >
+      udacity
+    </span>
+    <span
+      className="filter-separator"
+    >
+      
+    </span>
+  </span>
+</div>
+`;

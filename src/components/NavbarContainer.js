@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import '../styles/NavbarContainer.css'
+import Filter from './Filter'
 
 export class NavbarContainer extends Component {
   render () {
@@ -8,12 +9,7 @@ export class NavbarContainer extends Component {
       <div className='navbar'>
         <span className='navbar-logo'>readable </span>
         <span className='navbar-categories'>
-          {Object.keys(this.props.categories).map(((c,i,categories) => (
-            <span key={c}>
-              <span className='navbar-category'>{c}</span>
-              {i < categories.length - 1 ? <span className='navbar-category-separator'>|</span> : ''}
-            </span>
-          )))}
+          <Filter />
         </span>
       </div>
     )

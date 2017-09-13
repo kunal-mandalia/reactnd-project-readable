@@ -17,7 +17,7 @@ export const fetchInitialData = () => {
         axios.all(getComments)
         .then((commentsResponse) => {
           const categories = categoriesResponse.data.categories
-            .reduce((categories, category) => ({ ...categories, [category.name]: category}), {})
+
           const comments = commentsResponse
             .map(c => c.data)
             .reduce((comments, comment) => comments.concat(comment))
@@ -152,3 +152,4 @@ export const newCommentHide = () => ({ type: c.NEW_COMMENT_HIDE })
 
 export const sortByDate = (descending = true) => ({ type: c.SORT_BY_DATE, descending })
 export const sortByVotes = (descending = true) => ({ type: c.SORT_BY_VOTES, descending })
+export const filterByCategory = category => ({ type: c.FILTER_BY_CATEGORY, category })

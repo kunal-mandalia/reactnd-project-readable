@@ -4,6 +4,8 @@ import PostsContainer from './PostsContainer'
 import { fetchInitialData } from '../actions/index'
 import { connect } from 'react-redux'
 import NavbarContainer from './NavbarContainer'
+import Sort from './Sort'
+import NewPost from './NewPost'
 
 export class App extends Component {
   componentDidMount () {
@@ -14,6 +16,10 @@ export class App extends Component {
     return (
       <div className="App">
         <NavbarContainer />
+        <div className='app-actions'>
+          <Sort />
+          <NewPost />
+        </div>
         <PostsContainer />
       </div>
     );
