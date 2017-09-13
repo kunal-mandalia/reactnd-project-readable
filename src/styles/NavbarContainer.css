@@ -7,7 +7,7 @@
 .navbar-logo {
   color: #222222;
   background-color: white;
-  padding: 5px 5px 6px 8px;
+  padding: 5px 8px 6px 8px;
   margin: -5px;
   border-left: solid 6px paleturquoise;
 }
@@ -33,7 +33,9 @@
 .navbar-user {
   float: right;
   margin-right: 8vw;
-  margin-top: 2px;
+  margin-top: -4px;
+  background-color: #545454;
+  padding: 5.8px 8px;
   font-size: small;
 }
 
