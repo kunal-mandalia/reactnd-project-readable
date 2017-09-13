@@ -95,7 +95,7 @@ export class NewPost extends Component {
           <div className='new-post-collapsed'>
             <div className='action-bar'>
               [
-                <a className='action-bar-action add-new-post' onClick={this.toggleShow.bind(this)}> Add new post </a>
+                <a className='action-bar-action add-new-post' onClick={this.toggleShow.bind(this)}> Add New Post </a>
               ]
             </div>
           </div>

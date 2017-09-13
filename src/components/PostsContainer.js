@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Post from './Post'
 import Comment from './Comment'
-import Sort from './Sort'
-import NewPost from './NewPost'
 import NewComment from './NewComment'
 import { sortBy } from '../helper/functions'
 import {
@@ -42,8 +40,6 @@ export class PostsContainer extends Component {
     const sortedComments = sortBy({ data: comments, by: sort.by, descending: sort.descending })
     return (
       <div className='posts-container'>
-        <Sort />
-        <NewPost />
         {sortedPosts.map(p => (
           <div key={p.id}>
             <Post
