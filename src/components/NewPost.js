@@ -60,15 +60,16 @@ export class NewPost extends Component {
       <div className='new-post'>
         {show ? (
           <div className='new-post-expanded'>
+            <h4 className='new-post-headline'>New Post</h4>
             <InlineEdit
-              placeholder='Post Title*'
+              placeholder='post title*'
               editMode={true}
               value={title}
               onChange={this.handleTitleChange.bind(this)}
               className={`input-title ${title !== '' ? 'edit-input-changed' : 'edit-input'}`}
             />
             <InlineEdit
-              placeholder='Body*'
+              placeholder='body*'
               editMode={true}
               value={body}
               onChange={this.handleBodyChange.bind(this)}
@@ -76,12 +77,13 @@ export class NewPost extends Component {
               className={`input-body ${body !== '' ? 'edit-input-changed' : 'edit-input'}`}
             />
             <InlineEdit
-              placeholder='Category* e.g. react'
+              placeholder='category* e.g. react'
               editMode={true}
               value={category}
               onChange={this.handleCategoryChange.bind(this)}
               className={`input-category ${category !== '' ? 'edit-input-changed' : 'edit-input'}`}
             />
+            <hr className='separator' />
             <div className='action-bar'>
               [
                 <a
