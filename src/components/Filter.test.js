@@ -24,14 +24,14 @@ const props = {
 }
 
 describe(`<Filter .../>`, () => {
-  it(`should render ${props.categories.length} categories`, () => {
+  it(`should render ${props.categories.length + 1} categories`, () => {
     const wrapper = shallow(<Filter {...props} />)
-    expect(wrapper.find('.category')).toHaveLength(props.categories.length)
+    expect(wrapper.find('.filter-category')).toHaveLength(props.categories.length + 1)
   })
 
   it(`should call filterByCategory when clicking on a category`, () => {
     const wrapper = shallow(<Filter {...props} />)
-    wrapper.find('.category').first().simulate('click')
+    wrapper.find('.filter-category').first().simulate('click')
     expect(mockFnOnFilter.mock.calls).toHaveLength(1)    
   })
 

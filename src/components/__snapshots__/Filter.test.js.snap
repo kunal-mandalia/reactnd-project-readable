@@ -4,29 +4,57 @@ exports[`<Filter .../> should match snapshot 1`] = `
 <div
   className="filter"
 >
-  <div>
-    <div
-      className="category inactive"
+  <span>
+    <span
+      className="filter-category active"
+      onClick={[Function]}
+    >
+       everything
+    </span>
+    <span
+      className="filter-separator"
+    >
+       | 
+    </span>
+  </span>
+  <span>
+    <span
+      className="filter-category inactive"
       onClick={[Function]}
     >
       react
-    </div>
-  </div>
-  <div>
-    <div
-      className="category inactive"
+    </span>
+    <span
+      className="filter-separator"
+    >
+       | 
+    </span>
+  </span>
+  <span>
+    <span
+      className="filter-category inactive"
       onClick={[Function]}
     >
       redux
-    </div>
-  </div>
-  <div>
-    <div
-      className="category inactive"
+    </span>
+    <span
+      className="filter-separator"
+    >
+       | 
+    </span>
+  </span>
+  <span>
+    <span
+      className="filter-category inactive"
       onClick={[Function]}
     >
       udacity
-    </div>
-  </div>
+    </span>
+    <span
+      className="filter-separator"
+    >
+      
+    </span>
+  </span>
 </div>
 `;

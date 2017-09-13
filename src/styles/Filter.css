@@ -1,0 +1,21 @@
+.filter {
+  display: inline;
+}
+
+.filter-category {
+  cursor: pointer;
+}
+
+.filter-category.active {
+  padding-bottom: 2px;
+  border-bottom: solid 4px white;
+}
+
+.filter-category.inactive:hover {
+  padding-bottom: 2px;
+  border-bottom: solid 4px paleturquoise;
+}
+
+.filter-separator {
+  color: rgba(255, 255, 255, 0.3);
+}
