@@ -15,7 +15,7 @@ const initialState = {
     complete: false,
   },
   sort: {
-    by: `date`,
+    by: `votes`,
     descending: true
   },
   filter: ``
