@@ -7,6 +7,7 @@ import NavbarContainer from './NavbarContainer'
 import Sort from './Sort'
 import NewPost from './NewPost'
 
+// TODO: refactor using react router as per https://github.com/kunal-mandalia/reactnd-project-myreads/blob/master/src/components/App.js
 export class App extends Component {
   componentDidMount () {
     this.props.dispatch(fetchInitialData())
