@@ -1,6 +1,6 @@
 import * as c from '../constants/index'
 
-const initialState = {
+export const initialState = {
   app: `readable`,
   user: `thingtwo`,
   categories: [],

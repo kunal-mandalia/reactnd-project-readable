@@ -6,7 +6,7 @@ import '../styles/Filter.css'
 
 export class Filter extends Component {
   render () {
-    const { filter, categories, filterByCategory } = this.props
+    const { filter, categories = [], filterByCategory } = this.props
     return (
       <div className='filter'>
         <span>
