@@ -11,6 +11,7 @@
 
 .navbar-user-actions {
   display: table;
+  font-size: small;
 }
 
 .navbar-user-editcontrol {
