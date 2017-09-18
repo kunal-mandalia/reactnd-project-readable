@@ -9,12 +9,12 @@ import { sortBy } from '../helper/functions'
 
 export class ThreadContainer extends Component {
   render () {
-    console.log('render!!!')
     const { loading, loaded, errors, user, posts, comments, updates, sort, match, filterBy, pathname } = this.props
     let node
     const sortedPosts = sortBy({ data: posts, by: sort.by, descending: sort.descending })
     const sortedComments = sortBy({ data: comments, by: sort.by, descending: sort.descending })
     let filteredPosts = sortedPosts
+    
     if (loading) {
       node = <Loading />
     } else if (loaded) {
@@ -26,7 +26,6 @@ export class ThreadContainer extends Component {
         const category = pathname.split('/')[1]
         filteredPosts = sortedPosts.filter(p => p.category === category)
       }
-      console.log('filteredPosts', filteredPosts)
       node = <PostsContainer
         user={user}
         posts={filteredPosts}

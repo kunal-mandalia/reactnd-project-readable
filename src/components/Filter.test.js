@@ -2,8 +2,9 @@ import React from 'react'
 import { Filter } from './Filter'
 import { shallow } from 'enzyme'
 import renderer from 'react-test-renderer'
+// import { setup } from '../helper/setup.test'
 
-const mockFnOnFilter = jest.fn()
+const mockFnPush = jest.fn()
 const props = {
   categories: [
     {
@@ -19,7 +20,8 @@ const props = {
       path: 'udacity'
     }
   ],
-  filterByCategory: mockFnOnFilter,
+  pathname: `/`,
+  push: mockFnPush,
 }
 
 describe(`<Filter .../>`, () => {
@@ -31,7 +33,7 @@ describe(`<Filter .../>`, () => {
   it(`should call filterByCategory when clicking on a category`, () => {
     const wrapper = shallow(<Filter {...props} />)
     wrapper.find('.filter-category').first().simulate('click')
-    expect(mockFnOnFilter.mock.calls).toHaveLength(1)    
+    expect(mockFnPush.mock.calls).toHaveLength(1)    
   })
 
   it(`should match snapshot`, () => {

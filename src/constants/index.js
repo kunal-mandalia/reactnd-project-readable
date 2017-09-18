@@ -1,4 +1,4 @@
-export const API = 'http://localhost:5001'
+export const API = process.env.NODE_ENV === 'development' ? 'http://localhost:5001' : ''
 
 export const FETCH_INITIAL_DATA_REQUEST = 'FETCH_INITIAL_DATA_REQUEST'
 export const FETCH_INITIAL_DATA_ERROR = 'FETCH_INITIAL_DATA_ERROR'

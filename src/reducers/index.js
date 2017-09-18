@@ -1,6 +1,6 @@
 import * as c from '../constants/index'
 
-const initialState = {
+export const initialState = {
   app: `readable`,
   user: `thingtwo`,
   categories: [],
@@ -305,6 +305,7 @@ const reducer = (state = initialState, action) => {
       }
 
     case c.SET_USER:
+      debugger
       return {
         ...state,
         user: action.value

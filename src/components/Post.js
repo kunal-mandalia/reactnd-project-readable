@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 import '../styles/Post.css'
 import { EDIT_MODE, EDIT } from '../constants/index'
 
-class Post extends Component {
+export class Post extends Component {
   constructor(props) {
     super(props)
     this.state = {

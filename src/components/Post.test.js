@@ -1,6 +1,6 @@
 import React from 'react'
-import Post from './Post'
-import { shallow } from 'enzyme'
+import { Post } from './Post'
+import { setup } from '../helper/setup.test'
 
 const mockFnOnUpvote = jest.fn()
 const mockFnOnDownvote = jest.fn()
@@ -23,7 +23,7 @@ const props = {
 }
 
 describe(`<Post .../>`, () => {
-  const wrapper = shallow(<Post {...props} />)
+  const wrapper = setup(<Post {...props} />)
 
   it(`should render <Rating .../> component`, () => {
     expect(wrapper.find('Rating')).toHaveLength(1)

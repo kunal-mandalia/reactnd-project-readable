@@ -10,7 +10,7 @@ import { CREATE_POST_SUCCESS } from '../constants/index'
 export class NewPost extends Component {
   constructor (props) {
     super(props)
-    const id = uuid()    
+    const id = uuid()
     this.state = {
       id,
       title: ``,
