@@ -4,7 +4,7 @@ import Rating from './Rating'
 import ActionBar from './ActionBar'
 import PropTypes from 'prop-types'
 import '../styles/Comment.css'
-import { EDIT_MODE, REQUEST, EDIT, SUCCESS, ERROR } from '../constants/index'
+import { EDIT_MODE, EDIT } from '../constants/index'
 
 class Comment extends Component {
   constructor(props) {

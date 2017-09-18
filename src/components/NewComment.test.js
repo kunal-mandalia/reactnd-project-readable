@@ -1,7 +1,13 @@
 import React from 'react'
 import { NewComment } from './NewComment'
-import { mount } from 'enzyme'
+import { shallow, mount } from 'enzyme'
 import renderer from 'react-test-renderer'
+import mockStore  from 'redux-mock-store'
+import thunk from 'redux-thunk'
+import { Provider } from 'react-redux'
+import { initialState } from '../reducers/index'
+
+const store = mockStore()(initialState)
 
 const mockFnOnSave = jest.fn()
 const mockFnOnCancel = jest.fn()
@@ -17,13 +23,18 @@ const props = {
 }
 
 describe(`<NewComment .../>`, () => {
+  let wrappedComponent
+  beforeEach(() => {
+    wrappedComponent = <Provider store={store}><NewComment {...props} /></Provider>
+  })
+
   it(`should start hidden`, () => {
-    const wrapper = mount(<NewComment {...props} />)
+    const wrapper = mount(wrappedComponent)
     expect(wrapper.find('.hidden')).toHaveLength(1)
   })
 
   it(`should match snapshot`, () => {
-    const tree = renderer.create(<NewComment {...props} />).toJSON()
+    const tree = renderer.create(wrappedComponent).toJSON()
     expect(tree).toMatchSnapshot()
   })
 })

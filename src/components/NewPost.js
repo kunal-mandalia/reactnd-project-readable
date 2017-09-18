@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import InlineEdit from './InlineEdit'
 import { connect } from 'react-redux'
 import { createPost } from '../actions/index'
@@ -11,7 +10,7 @@ import { CREATE_POST_SUCCESS } from '../constants/index'
 export class NewPost extends Component {
   constructor (props) {
     super(props)
-    const id = uuid()    
+    const id = uuid()
     this.state = {
       id,
       title: ``,
@@ -55,7 +54,7 @@ export class NewPost extends Component {
   }
 
   render () {
-    const { id, title, body, category, show } = this.state
+    const { title, body, category, show } = this.state
     return (
       <div className='new-post'>
         {show ? (
@@ -108,9 +107,9 @@ export class NewPost extends Component {
 }
 
 const mapStateToProps = state => ({
-  categories: state.categories,
-  newPost: state.newPost,
-  user: state.user
+  categories: state.app.categories,
+  newPost: state.app.newPost,
+  user: state.app.user
 })
 
 const mapDispatchToProps = dispatch => ({

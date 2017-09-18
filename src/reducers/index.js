@@ -1,6 +1,6 @@
 import * as c from '../constants/index'
 
-const initialState = {
+export const initialState = {
   app: `readable`,
   user: `thingtwo`,
   categories: [],
@@ -19,7 +19,9 @@ const initialState = {
     by: `votes`,
     descending: true
   },
-  filter: ``
+  loading: true,
+  loaded: false,
+  errors: []
 }
 
 const updatePost = ({ state, post, update }) => ({
@@ -85,7 +87,12 @@ const deleteComment = ({ state, id }) => ({
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case c.FETCH_INITIAL_DATA_SUCCESS:
-      return {...state, ...action.value}
+      return {
+        ...state,
+        ...action.value,
+        loading: false,
+        loaded: true,
+      }
 
     case c.EDIT_POST_BEGIN:
       return {
@@ -297,10 +304,11 @@ const reducer = (state = initialState, action) => {
         }
       }
 
-    case c.FILTER_BY_CATEGORY:
+    case c.SET_USER:
+      debugger
       return {
         ...state,
-        filter: action.category
+        user: action.value
       }
 
     default:

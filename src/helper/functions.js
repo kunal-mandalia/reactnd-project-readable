@@ -29,3 +29,4 @@ export const sortBy = ({ data, by, descending = true }) => {
     return Object.keys(data).map(k => data[k]).sort((d1, d2) => compare(d1[property], d2[property], descending) )
   }
 }
+

@@ -264,5 +264,4 @@ describe('helper functions', () => {
       })
     })
   })
-
 })
