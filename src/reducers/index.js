@@ -2,7 +2,7 @@ import * as c from '../constants/index'
 
 export const initialState = {
   app: `readable`,
-  user: `thingtwo`,
+  user: `whitehat`,
   categories: [],
   comments: [],
   posts: [],

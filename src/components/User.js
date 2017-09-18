@@ -47,7 +47,6 @@ export class User extends Component {
     const { user, editUser, editMode } = this.state
     return (
       <span className={`navbar-user ${editMode ? 'navbar-user-editmode' : ''}`}>
-        hello,
         <span className='navbar-user-editcontrol'>
           <InlineEdit
             placeholder={`Impersonate a user`}
@@ -67,7 +66,7 @@ export class User extends Component {
             </span>
           ) : (
             <span>
-              <a className='navbar-user-action' onClick={this.toggleEditMode}>[ impersonate ]</a>
+              <a className='navbar-user-action small' onClick={this.toggleEditMode}>[ impersonate ]</a>
             </span>
           )}
         </span>

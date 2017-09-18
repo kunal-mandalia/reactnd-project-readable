@@ -12,6 +12,10 @@
   border-left: solid 6px paleturquoise;
 }
 
+.navbar-logo:hover {
+  cursor: pointer;
+}
+
 .navbar-categories {
   margin-left: 20px;
 }
