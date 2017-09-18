@@ -13,3 +13,6 @@ See the app live on [heroku](https://reactnd-project-readable.herokuapp.com/)
 
 ## Run tests
 - `npm run test`
+
+## License
+MIT
