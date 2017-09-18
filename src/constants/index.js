@@ -1,4 +1,4 @@
-export const API = process.env.HEROKU_ENV === 'production' ? 'https://reactnd-project-readable-api.herokuapp.com/' : 'http://localhost:5001'
+export const API = 'https://reactnd-project-readable-api.herokuapp.com'
 
 export const FETCH_INITIAL_DATA_REQUEST = 'FETCH_INITIAL_DATA_REQUEST'
 export const FETCH_INITIAL_DATA_ERROR = 'FETCH_INITIAL_DATA_ERROR'
