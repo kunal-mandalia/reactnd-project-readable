@@ -55,3 +55,13 @@
   font-weight: bold;
   color: #545454;
 }
+
+.link-push:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.light-mode {
+  color: whitesmoke !important;
+  background-color: black !important;
+}

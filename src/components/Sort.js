@@ -68,8 +68,8 @@ Sort.propTypes = {
 }
 
 const mapStateToProps = state => ({
-  sortBy: state.sort.by,
-  sortDescending: state.sort.descending
+  sortBy: state.app.sort.by,
+  sortDescending: state.app.sort.descending
 })
 
 const mapDispatchToProps = dispatch => ({

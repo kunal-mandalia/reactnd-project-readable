@@ -4,7 +4,7 @@ import Rating from './Rating'
 import ActionBar from './ActionBar'
 import PropTypes from 'prop-types'
 import '../styles/Post.css'
-import { EDIT_MODE, REQUEST, EDIT, SUCCESS, ERROR } from '../constants/index'
+import { EDIT_MODE, EDIT } from '../constants/index'
 
 class Post extends Component {
   constructor(props) {
@@ -55,6 +55,7 @@ class Post extends Component {
               value={this.state.editTitle}
               onChange={this.handleChangeTitle}
               editMode={editMode}
+              link={`/${this.props.category}/${this.props.id}`}
             />
             <InlineEdit
               className={`inline-edit post-body ${this.props.body === this.state.editBody ? 'edit-input-unchanged' : 'edit-input-changed'}`}

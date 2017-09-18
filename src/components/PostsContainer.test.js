@@ -62,7 +62,6 @@ const props = {
   votePost: mockFn,
   voteComment: mockFn,
   newCommentShow: mockFn,
-  filter: ``
 }
 
 const updates = {}

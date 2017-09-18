@@ -16,8 +16,9 @@ import {
   deletePost,
   deleteComment,
   newCommentShow,
-  newCommentHide,
 } from '../actions/index.js'
+import NotFound from './NotFound'
+
 import '../styles/PostsContainer.css'
 
 export class PostsContainer extends Component {
@@ -35,12 +36,11 @@ export class PostsContainer extends Component {
   newCommentShow = (parentId) => { this.props.newCommentShow(parentId) }
 
   render () {
-    const { posts, comments, sort, filter, user } = this.props
-    const sortedPosts = sortBy({ data: posts, by: sort.by, descending: sort.descending }).filter(p => p.category.includes(filter) )
-    const sortedComments = sortBy({ data: comments, by: sort.by, descending: sort.descending })
+    const { posts, comments, sort, user, filterBy } = this.props
     return (
       <div className='posts-container'>
-        {sortedPosts.map(p => (
+        {posts.length > 0 ? (
+          posts.map(p => (
           <div key={p.id}>
             <Post
               {...p}
@@ -55,7 +55,7 @@ export class PostsContainer extends Component {
               isAuthor={user === p.author}
             />
             <div className='posts-comments'>
-              {sortedComments.filter(c => c.parentId === p.id )
+              {comments.filter(c => c.parentId === p.id )
                 .map(c => (
                   <Comment
                     key={c.id}
@@ -74,20 +74,15 @@ export class PostsContainer extends Component {
               <NewComment parentId={p.id} />
             </div>            
           </div>
-        ))}
+        ))) : (
+          <NotFound message='No posts found' filterBy={filterBy} />
+        )}
       </div>
     )
   }
 }
 
-const mapStateToProps = state => ({
-  user: state.user,
-  posts: state.posts,
-  comments: state.comments,
-  updates: state.updates,
-  sort: state.sort,
-  filter: state.filter
-})
+const mapStateToProps = state => ({})
 
 const mapDispatchToProps = dispatch => ({
   editPost: (id, newTitle, newBody) => dispatch(editPost({ id, title: newTitle, body: newBody })),

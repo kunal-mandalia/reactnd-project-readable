@@ -20,7 +20,6 @@ const props = {
     }
   ],
   filterByCategory: mockFnOnFilter,
-  filter: ``
 }
 
 describe(`<Filter .../>`, () => {

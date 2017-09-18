@@ -152,4 +152,5 @@ export const newCommentHide = () => ({ type: c.NEW_COMMENT_HIDE })
 
 export const sortByDate = (descending = true) => ({ type: c.SORT_BY_DATE, descending })
 export const sortByVotes = (descending = true) => ({ type: c.SORT_BY_VOTES, descending })
-export const filterByCategory = category => ({ type: c.FILTER_BY_CATEGORY, category })
+
+export const setUser = (username) => ({ type: c.SET_USER, value: username })

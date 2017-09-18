@@ -5,13 +5,17 @@
   "dependencies": {
     "axios": "^0.16.2",
     "enzyme": "^2.9.1",
+    "halogen": "^0.2.0",
     "moment": "^2.18.1",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-icons": "^2.2.5",
     "react-redux": "^5.0.6",
+    "react-router-dom": "^4.2.2",
+    "react-router-redux": "5.0.0-alpha.6",
     "redux": "^3.7.2",
+    "redux-devtools-extension": "^2.13.2",
     "redux-thunk": "^2.2.0",
     "uuid": "^3.1.0"
   },

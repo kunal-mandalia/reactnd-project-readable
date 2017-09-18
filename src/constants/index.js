@@ -61,4 +61,5 @@ export const NEW_COMMENT_HIDE = 'NEW_COMMENT_HIDE'
 
 export const SORT_BY_VOTES = 'SORT_BY_VOTES'
 export const SORT_BY_DATE = 'SORT_BY_DATE'
-export const FILTER_BY_CATEGORY = 'FILTER_BY_CATEGORY'
+
+export const SET_USER = 'SET_USER'

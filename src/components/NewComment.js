@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import InlineEdit from './InlineEdit'
 import { connect } from 'react-redux'
 import { newCommentHide, createComment } from '../actions/index'
@@ -54,8 +53,8 @@ export class NewComment extends Component {
 }
 
 const mapStateToProps = state => ({
-  newComment: state.newComment,
-  user: state.user
+  newComment: state.app.newComment,
+  user: state.app.user
 })
 
 const mapDispatchToProps = dispatch => ({
