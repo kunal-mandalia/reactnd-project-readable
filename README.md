@@ -2,6 +2,8 @@
 
 A reddit/hackernews/stackoverflow inspired thread app and Udacity React nano degree project showcasing Redux.
 
+![Alt Text](/public/readable.gif)
+
 ## Demo
 See the app live on [heroku](https://reactnd-project-readable.herokuapp.com/)
 
